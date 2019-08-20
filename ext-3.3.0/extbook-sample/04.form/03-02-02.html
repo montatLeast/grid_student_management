@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>04.form</title>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all.js"></script>
+        <script type="text/javascript">
+Ext.onReady(function(){
+
+    // HtmlEditor需要这个
+    Ext.QuickTips.init();
+
+    var field1 = new Ext.form.Field({
+		fieldLabel: 'qtip',
+        msgTarget: 'qtip'
+    });
+    var field2 = new Ext.form.Field({
+		fieldLabel: 'title',
+        msgTarget: 'title'
+    });
+    var field3 = new Ext.form.Field({
+		fieldLabel: 'side',
+        msgTarget: 'side'
+    });
+    var field4 = new Ext.form.Field({
+		fieldLabel: 'under',
+        msgTarget: 'under'
+    });
+
+    var form = new Ext.form.FormPanel({
+		title: 'form',
+        frame: true,
+        items: [field1, field2, field3, field4],
+        renderTo: 'form'
+    });
+    field1.markInvalid();
+    field2.markInvalid();
+    field3.markInvalid();
+    field4.markInvalid();
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+        <div id="form" style="margin:20px;"></div>
+    </body>
+</html>

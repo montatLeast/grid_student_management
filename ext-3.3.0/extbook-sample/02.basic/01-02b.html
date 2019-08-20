@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>02.basic</title>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all.js"></script>
+        <script type="text/javascript">
+Ext.onReady(function(){
+    var test = Ext.get('test');
+    test.on('click', function() {
+        alert("handle1");
+    });
+    test.on('click', function() {
+        alert("handle2");
+    });
+});
+        </script>
+    </head>
+    <body>
+        <button id="test">test</button>
+    </body>
+</html>

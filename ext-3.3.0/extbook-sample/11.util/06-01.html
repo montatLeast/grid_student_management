@@ -1,0 +1,108 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all-debug.js"></script>
+        <script type="text/javascript" src="localXHR.js"></script>
+        <title>11.util</title>
+        <script type="text/javascript">
+Ext.onReady(function(){
+    var fx = Ext.get('fx01');
+    var log = Ext.get('log');
+
+    fx.pause(1);
+    log.update('fadeOut()');
+    fx.fadeOut({
+        callback: function() {
+            log.update('fadeIn()');
+        }
+    });
+
+    fx.pause(1);
+    fx.fadeIn({
+        callback: function() {
+            log.update('frame()');
+        }
+    });
+
+    fx.pause(1);
+    fx.frame('green', 1, {
+        callback: function() {
+            log.update('ghost()');
+        }
+    });
+
+    fx.pause(1);
+    fx.ghost('t', {
+        callback: function() {
+            log.update('highlight()');
+            fx.show(true);
+        }
+    });
+
+    fx.pause(1);
+    fx.highlight("0000ff", {
+        callback: function() {
+            log.update('puff()');
+            fx.show(true);
+        }
+    });
+
+    fx.pause(1);
+    fx.puff({
+        remove: false,
+        callback: function() {
+            log.update('scale()');
+            fx.show(true);
+        }
+    });
+
+    fx.pause(1);
+    fx.scale(100, 100, {
+        callback: function() {
+            log.update('shift()');
+        }
+    });
+
+    fx.pause(1);
+    fx.shift({
+        callback: function() {
+            log.update('slideOut()');
+        }
+    });
+
+    fx.pause(1);
+    fx.slideOut('tl', {
+        callback: function() {
+            log.update('slideIn()');
+        }
+    });
+
+    fx.pause(1);
+    fx.slideIn('tr', {
+        callback: function() {
+            log.update('switchOff()');
+        }
+    });
+
+    fx.pause(1);
+    fx.switchOff({
+        callback: function() {
+            log.update('done...');
+        }
+    });
+
+
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+        <div id="log" style="background: green;color: white;font-weight: bold;padding: 50px;">&nbsp;</div>
+        <div style="padding: 20px; margin: 20px;">
+            <div id="fx01" style="background: red;height: 200px;width: 200px;">&nbsp;</div>
+        </div>
+    </body>
+</html>
+

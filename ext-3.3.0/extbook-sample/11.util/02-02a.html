@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>11.util</title>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all.js"></script>
+        <script type="text/javascript">
+Ext.onReady(function() {
+    Ext.DomHelper.applyStyles("child1", "background-color:red;");
+    Ext.DomHelper.applyStyles("child2", {
+        'background-color':'green',
+        'font-weight':'bold',
+        'font-style':'italic',
+        'text-decoration':'line-through'
+    });
+    Ext.DomHelper.applyStyles("child3", function() {
+        var time = new Date().getTime();
+        if (time % 2 == 0) {
+            return "background-color:yellow";
+        } else {
+            return "background-color:blue";
+        }
+    });
+});
+
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+        <div id="parent" style="border: 1px solid black;padding: 5px;margin: 5px;background: lightgray;">
+          <p id="child1">child1</p>
+          <p id="child2">child2</p>
+          <div id="child3">
+            <p id="child5">inner child</p>
+          </div>
+          <p id="child3">child4</p>
+        </div>
+    </body>
+</html>

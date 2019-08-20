@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="ext-2.0.2/resources/css/ext-all.css" />
+        <script type="text/javascript" src="ext-2.0.2/ext-base.js"></script>
+        <script type="text/javascript" src="ext-2.0.2/ext-all.js"></script>
+        <script type="text/javascript" src="ext-2.0.2/ext-lang-zh_CN.js"></script>
+        <script type="text/javascript" src="adobe-air/AIRAliases.js"></script>
+        <link rel="stylesheet" type="text/css" href="ext-air/resources/ext-air.css" />
+        <script type="text/javascript" src="ext-air/ext-air.js"></script>
+        <title>ext</title>
+        <script type="text/javascript">
+Ext.onReady(function(){
+
+    var win = new Ext.air.NativeWindow({
+        id: 'mainWindow',
+        instance: window.nativeWindow,
+        minimizeToTray: true,
+        trayIcon: 'ext-air/resources/icons/extlogo16.png',
+        trayTip: '原生窗口',
+        trayMenu : [{
+            text: '打开窗口',
+            handler: function(){
+                win.activate();
+            }
+        }, '-', {
+            text: '退出',
+            handler: function(){
+                air.NativeApplication.nativeApplication.exit();
+            }
+        }]
+    });
+
+});
+        </script>
+    </head>
+    <body>
+      xxxx
+    </body>
+</html>
+

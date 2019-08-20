@@ -1,0 +1,104 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>学生信息管理</title>
+        <link rel="stylesheet" type="text/css" href="../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../ext-base.js"></script>
+        <script type="text/javascript" src="../ext-all.js"></script>
+        <script type="text/javascript" src="../ext-lang-zh_CN.js"></script>
+        <script type="text/javascript">
+Ext.BLANK_IMAGE_URL = '../resources/images/default/s.gif';
+        </script>
+        <link rel="stylesheet" type="text/css" href="../styles/ext-patch.css" />
+        <script type="text/javascript">
+
+Ext.onReady(function() {
+
+	var sexRenderer = function(value) {
+        if (value == 1) {
+            return '<span style="color:red;font-weight:bold;">男</span>';
+        } else if (value == 2) {
+            return '<span style="color:green;font-weight:bold;">女</span>';
+        }
+    };
+
+    var StudentRecord = Ext.data.Record.create([
+        {name: 'id', type: 'int'},
+        {name: 'code', type: 'string'},
+        {name: 'name', type: 'string'},
+        {name: 'sex', type: 'int'},
+        {name: 'age', type: 'int'},
+        {name: 'political', type: 'string'},
+        {name: 'origin', type: 'string'},
+        {name: 'professional', type: 'string'}
+    ]);
+
+    var store = new Ext.data.Store({
+        proxy: new Ext.data.HttpProxy({url: '../../jsp/list.jsp'}),
+        reader: new Ext.data.JsonReader({
+            totalProperty: 'totalCount',
+            root: 'result'
+        },StudentRecord),
+        remoteSort: true
+    });
+    store.load({params:{start:0,limit:15}});
+
+    var columns = new Ext.grid.ColumnModel([
+        {header: '学号', dataIndex: 'code'},
+        {header: '姓名', dataIndex: 'name'},
+        {header: '性别', dataIndex: 'sex', renderer: sexRenderer},
+        {header: '年龄', dataIndex: 'age'},
+        {header: '政治面貌', dataIndex: 'political'},
+        {header: '籍贯', dataIndex: 'origin'},
+        {header: '所属系', dataIndex: 'professional'}
+    ]);
+    columns.defaultSortable = true;
+
+    // grid start
+    var grid = new Ext.grid.GridPanel({
+        title: '学生信息列表',
+        region: 'center',
+        loadMask: true,
+        store: store,
+        cm: columns,
+        sm: new Ext.grid.RowSelectionModel({singleSelect:true}),
+        viewConfig: {
+            forceFit: true
+        },
+        bbar: new Ext.PagingToolbar({
+            pageSize: 15,
+            store: store,
+            displayInfo: true
+        })
+    });
+    // grid end
+
+    // layout start
+    var viewport = new Ext.Viewport({
+        layout: 'border',
+        items: [{
+            region: 'north',
+            contentEl: 'head'
+        }, grid, {
+            region: 'east',
+            html: 'form'
+        }, {
+            region: 'south',
+            contentEl: 'foot'
+        }]
+    });
+    // layout end
+});
+        </script>
+    </head>
+    <body>
+        <div id="main">
+            <div id="head" style="font-weight:bold;font-size:200%;">学生信息管理</div>
+            <div id="foot" style="text-align:right;"> - &copy; 2008 <a href="http://www.family168.com" target="_blank">www.family168.com</a> - </div>
+        </div>
+    </body>
+</html>
+
+
+
+

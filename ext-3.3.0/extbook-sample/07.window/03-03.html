@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>07.window</title>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all.js"></script>
+        <script type="text/javascript">
+var win = null;
+Ext.onReady(function(){
+
+    win = new Ext.Window({
+        el:'window-win',
+        width:300,
+        height:100,
+        closable: false
+    });
+    win.show();
+
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+        <div id="window-win"></div>
+        <button onclick="win.show()">win.show()</button>
+        <button onclick="win.hide()">win.hide()</button>
+        <button onclick="win.close()">win.close()</button>
+    </body>
+</html>

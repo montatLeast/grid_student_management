@@ -1,0 +1,117 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>ext-2.2</title>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all.js"></script>
+        <style type="text/css">
+.x-check-group-alt {
+    background: #D1DDEF;
+    border-top:1px dotted #B5B8C8;
+    border-bottom:1px dotted #B5B8C8;
+}
+        </style>
+        <script type="text/javascript">
+Ext.BLANK_IMAGE_URL = '../../resources/images/default/s.gif';
+
+Ext.onReady(function(){
+
+    var form = new Ext.form.FormPanel({
+        title: 'checkbox group',
+        frame: true,
+        width: 600,
+        items: [{
+            xtype: 'checkboxgroup',
+            fieldLabel: '自动布局',
+            items: [
+                {boxLabel: 'Item 1', name: 'cb-auto-1'},
+                {boxLabel: 'Item 2', name: 'cb-auto-2', checked: true},
+                {boxLabel: 'Item 3', name: 'cb-auto-3'},
+                {boxLabel: 'Item 4', name: 'cb-auto-4'},
+                {boxLabel: 'Item 5', name: 'cb-auto-5'}
+            ]
+        },{
+            xtype: 'checkboxgroup',
+            fieldLabel: '单列',
+            itemCls: 'x-check-group-alt',
+            columns: 1,
+            items: [
+                {boxLabel: 'Item 1', name: 'cb-col-1'},
+                {boxLabel: 'Item 2', name: 'cb-col-2', checked: true},
+                {boxLabel: 'Item 3', name: 'cb-col-3'}
+            ]
+        },{
+                xtype: 'checkboxgroup',
+                fieldLabel: '多列（水平）',
+                columns: 3,
+                items: [
+                    {boxLabel: 'Item 1', name: 'cb-horiz-1'},
+                    {boxLabel: 'Item 2', name: 'cb-horiz-2', checked: true},
+                    {boxLabel: 'Item 3', name: 'cb-horiz-3'},
+                    {boxLabel: 'Item 4', name: 'cb-horiz-4'},
+                    {boxLabel: 'Item 5', name: 'cb-horiz-5'}
+                ]
+        },{
+            xtype: 'checkboxgroup',
+            fieldLabel: '多列（竖直）',
+            itemCls: 'x-check-group-alt',
+            columns: 3,
+            vertical: true,
+            items: [
+                {boxLabel: 'Item 1', name: 'cb-vert-1'},
+                {boxLabel: 'Item 2', name: 'cb-vert-2', checked: true},
+                {boxLabel: 'Item 3', name: 'cb-vert-3'},
+                {boxLabel: 'Item 4', name: 'cb-vert-4'},
+                {boxLabel: 'Item 5', name: 'cb-vert-5'}
+            ]
+        },{
+            xtype: 'checkboxgroup',
+            fieldLabel: '多列<br />（自定义）',
+            columns: [100, 100],
+            vertical: true,
+            items: [
+                {boxLabel: 'Item 1', name: 'cb-custwidth', inputValue: 1},
+                {boxLabel: 'Item 2', name: 'cb-custwidth', inputValue: 2, checked: true},
+                {boxLabel: 'Item 3', name: 'cb-custwidth', inputValue: 3},
+                {boxLabel: 'Item 4', name: 'cb-custwidth', inputValue: 4},
+                {boxLabel: 'Item 5', name: 'cb-custwidth', inputValue: 5}
+            ]
+        },{
+            xtype: 'checkboxgroup',
+            itemCls: 'x-check-group-alt',
+            fieldLabel: '自自定义布局',
+            allowBlank: false,
+            anchor: '95%',
+            items: [{
+                columnWidth: '.25',
+                items: [
+                    {xtype: 'label', text: 'Heading 1', cls:'x-form-check-group-label', anchor:'-15'},
+                    {boxLabel: 'Item 1', name: 'cb-cust-1'},
+                    {boxLabel: 'Item 2', name: 'cb-cust-2'}
+                ]
+            },{
+                columnWidth: '.5',
+                items: [
+                    {xtype: 'label', text: 'Heading 2', cls:'x-form-check-group-label', anchor:'-15'},
+                    {boxLabel: 'A long item just for fun', name: 'cb-cust-3'}
+                ]
+            },{
+                columnWidth: '.25',
+                items: [
+                    {xtype: 'label', text: 'Heading 3', cls:'x-form-check-group-label', anchor:'-15'},
+                    {boxLabel: 'Item 4', name: 'cb-cust-4'},
+                    {boxLabel: 'Item 5', name: 'cb-cust-5'}
+                ]
+            }]
+        }]
+    });
+
+    form.render(document.body);
+
+});
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

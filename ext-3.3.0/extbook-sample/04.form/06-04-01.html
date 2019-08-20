@@ -1,0 +1,80 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all-debug.js"></script>
+        <title>04.form</title>
+        <script type="text/javascript">
+Ext.onReady(function(){
+   set = new Ext.form.FieldSet({
+        title:'fieldset',
+        //width:400,
+        height:60,
+        columnWidth: 1,
+        layout: 'column',
+        border: true,
+        anchor:'100%',
+        labelWidth: 40,
+        items:[{
+            columnWidth:.4,
+            layout: 'form',
+            border:false,
+            items: [{
+                xtype:'textfield',
+                fieldLabel: 'id',
+                name: 'aaa',
+                anchor: '95%'
+            }]
+        },{
+            columnWidth:.4,
+            layout: 'form',
+            border:false,
+            items: [{
+                xtype:'textfield',
+                fieldLabel: 'name',
+                name: 'bbb',
+                anchor:'95%'
+            }]
+        },{
+            columnWidth:.2,
+            layout: 'form',
+            border:false,
+            items: [{
+                xtype:'button',
+                text:'query',
+                //iconCls: 'calendar',
+                handler: function(){
+                    Ext.Msg.alert('sss','aaa');
+                },
+                scope: this
+            }]
+        }]
+    });
+    setform = new Ext.form.FormPanel({
+        height: 80,
+        border: false,
+        labelWidth:80,
+        labelAlign:'right',
+        frame:true,
+        items:[set]
+    });
+
+    win = new Ext.Window({
+        title: 'FieldSet的column布局',
+        layout:'fit',
+        width:500,
+        height:300,
+        closeAction:'hide',
+        items: [setform]
+    });
+    win.show();
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+
+    </body>
+</html>
+

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="400" height="500" viewBox="0 0 400 500" style="font-weight:bold;font-family:arial,'lucida console',sans-serif,黑体;font-size:14px;">
+    <defs>
+        <linearGradient id="line" x1="50%" x2="50%" y1="0%" y2="100%">
+            <stop offset="20%" stop-color="#88AAEE"/>
+            <stop offset="100%" stop-color="#224499"/>
+        </linearGradient>
+        <marker id="arrow" markerWidth="10" markerHeight="8" refX="4" refY="4" orient="auto">
+            <path d="M0,0 8,4 0,8Z" fill="white" stroke="black"/>
+        </marker>
+        <g id="bg">
+            <rect x="0" y="0" width="10" height="10" rx="5" ry="5"
+                stroke="#223388" stroke-width="2" fill="url(#line)"/>
+        </g>
+    </defs>
+    <rect x="0" y="0" width="400" height="500" fill="white"/>
+    <g transform="translate(10,10)">
+        <g transform="translate(20,0)">
+            <rect x="0" y="0" width="210" height="25" rx="5" ry="5"
+                stroke="#223388" stroke-width="2" fill="url(#line)"/>
+            <text x="10" y="17" fill="white">Ext.layout.ContainerLayout</text>
+            <line x1="5" y1="25" x2="5" y2="280" stroke="black"/>
+            <line x1="5" y1="45" x2="15" y2="45" stroke="black" marker-end="url(#arrow)"/>
+            <line x1="5" y1="130" x2="15" y2="130" stroke="black" marker-end="url(#arrow)"/>
+            <line x1="5" y1="160" x2="15" y2="160" stroke="black" marker-end="url(#arrow)"/>
+            <line x1="5" y1="190" x2="15" y2="190" stroke="black" marker-end="url(#arrow)"/>
+            <line x1="5" y1="280" x2="15" y2="280" stroke="black" marker-end="url(#arrow)"/>
+        </g>
+        <g transform="translate(40,30)">
+            <g>
+                <rect x="0" y="0" width="180" height="25" rx="5" ry="5"
+                    stroke="#223388" stroke-width="2" fill="url(#line)"/>
+                <text x="10" y="17" fill="white">Ext.layout.AnchorLayout</text>
+                <line x1="5" y1="25" x2="5" y2="75" stroke="black"/>
+                <line x1="5" y1="45" x2="15" y2="45" stroke="black" marker-end="url(#arrow)"/>
+                <line x1="5" y1="75" x2="15" y2="75" stroke="black" marker-end="url(#arrow)"/>
+            </g>
+            <g transform="translate(20,30)">
+                <rect x="0" y="0" width="200" height="25" rx="5" ry="5"
+                    stroke="#223388" stroke-width="2" fill="url(#line)"/>
+                <text x="10" y="17" fill="white">Ext.layout.AbsoluteLayout</text>
+            </g>
+            <g transform="translate(20,60)">
+                <rect x="0" y="0" width="175" height="25" rx="5" ry="5"
+                    stroke="#223388" stroke-width="2" fill="url(#line)"/>
+                <text x="10" y="17" fill="white">Ext.layout.FormLayout</text>
+            </g>
+        </g>
+        <g transform="translate(40,120)">
+            <rect x="0" y="0" width="190" height="25" rx="5" ry="5"
+                stroke="#223388" stroke-width="2" fill="url(#line)"/>
+            <text x="10" y="17" fill="white">Ext.layout.BorderLayout</text>
+        </g>
+        <g transform="translate(40,150)">
+            <rect x="0" y="0" width="190" height="25" rx="5" ry="5"
+                stroke="#223388" stroke-width="2" fill="url(#line)"/>
+            <text x="10" y="17" fill="white">Ext.layout.ColumnLayout</text>
+        </g>
+        <g transform="translate(40,180)">
+            <g>
+                <rect x="0" y="0" width="160" height="25" rx="5" ry="5"
+                    stroke="#223388" stroke-width="2" fill="url(#line)"/>
+                <text x="10" y="17" fill="white">Ext.layout.FitLayout</text>
+                <line x1="5" y1="25" x2="5" y2="75" stroke="black"/>
+                <line x1="5" y1="45" x2="15" y2="45" stroke="black" marker-end="url(#arrow)"/>
+                <line x1="5" y1="75" x2="15" y2="75" stroke="black" marker-end="url(#arrow)"/>
+            </g>
+            <g transform="translate(20,30)">
+                <rect x="0" y="0" width="160" height="25" rx="5" ry="5"
+                    stroke="#223388" stroke-width="2" fill="url(#line)"/>
+                <text x="10" y="17" fill="white">Ext.layout.Accordion</text>
+            </g>
+            <g transform="translate(20,60)">
+                <rect x="0" y="0" width="175" height="25" rx="5" ry="5"
+                    stroke="#223388" stroke-width="2" fill="url(#line)"/>
+                <text x="10" y="17" fill="white">Ext.layout.CardLayout</text>
+            </g>
+        </g>
+        <g transform="translate(40,270)">
+            <rect x="0" y="0" width="180" height="25" rx="5" ry="5"
+                stroke="#223388" stroke-width="2" fill="url(#line)"/>
+            <text x="10" y="17" fill="white">Ext.layout.TableLayout</text>
+        </g>
+    </g>
+</svg>

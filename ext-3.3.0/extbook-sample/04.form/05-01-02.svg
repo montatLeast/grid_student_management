@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="950" height="400" viewBox="0 0 950 400" style="font-weight:bold;font-family:arial,'lucida console',sans-serif,黑体;font-size:14px;">
+    <defs>
+        <linearGradient id="line" x1="50%" x2="50%" y1="0%" y2="100%">
+            <stop offset="20%" stop-color="#88AAEE"/>
+            <stop offset="100%" stop-color="#224499"/>
+        </linearGradient>
+        <marker id="arrow" markerWidth="10" markerHeight="8" refX="4" refY="4" orient="auto">
+            <path d="M0,0 8,4 0,8Z" fill="white" stroke="black"/>
+        </marker>
+        <g id="bg">
+            <rect x="0" y="0" width="10" height="10" rx="5" ry="5"
+                stroke="#223388" stroke-width="2" fill="url(#line)"/>
+        </g>
+    </defs>
+    <rect x="0" y="0" width="950" height="700" fill="white"/>
+    <g transform="translate(400,80)">
+        <g transform="translate(0,0)">
+            <rect x="0" y="0" width="145" height="25" rx="5" ry="5"
+                stroke="#223388" stroke-width="2" fill="url(#line)"/>
+            <text x="10" y="17" fill="white">Ext.form.TextField</text>
+            <line x1="70" y1="25" x2="70" y2="45" stroke="black"/>
+            <line x1="-90" y1="45" x2="230" y2="45" stroke="black"/>
+            <line x1="-90" y1="45" x2="-90" y2="55" stroke="black" marker-end="url(#arrow)"/>
+            <line x1="70" y1="45" x2="70" y2="55" stroke="black" marker-end="url(#arrow)"/>
+            <line x1="230" y1="45" x2="230" y2="55" stroke="black" marker-end="url(#arrow)"/>
+        </g>
+        <g transform="translate(-180,60)">
+            <rect x="0" y="0" width="170" height="25" rx="5" ry="5"
+                stroke="#223388" stroke-width="2" fill="url(#line)"/>
+            <text x="10" y="17" fill="white">Ext.form.NumberField</text>
+        </g>
+        <g transform="translate(0,60)">
+            <rect x="0" y="0" width="140" height="25" rx="5" ry="5"
+                stroke="#223388" stroke-width="2" fill="url(#line)"/>
+            <text x="10" y="17" fill="white">Ext.form.TextArea</text>
+        </g>
+        <g transform="translate(150,60)">
+            <g transform="translate(0,0">
+                <rect x="0" y="0" width="170" height="25" rx="5" ry="5"
+                    stroke="#223388" stroke-width="2" fill="url(#line)"/>
+                <text x="10" y="17" fill="white">Ext.form.TriggerField</text>
+                <line x1="80" y1="25" x2="80" y2="45" stroke="black"/>
+                <line x1="0" y1="45" x2="150" y2="45" stroke="black"/>
+                <line x1="0" y1="45" x2="0" y2="55" stroke="black" marker-end="url(#arrow)"/>
+                <line x1="150" y1="45" x2="150" y2="55" stroke="black" marker-end="url(#arrow)"/>
+            </g>
+            <g transform="translate(-80,60)">
+                <rect x="0" y="0" width="160" height="25" rx="5" ry="5"
+                    stroke="#223388" stroke-width="2" fill="url(#line)"/>
+                <text x="10" y="17" fill="white">Ext.form.ComboBox</text>
+                                <line x1="80" y1="25" x2="80" y2="45" stroke="black" marker-end="url(#arrow)"/>
+            </g>
+            <g transform="translate(-80,110)">
+                <rect x="0" y="0" width="160" height="25" rx="5" ry="5"
+                    stroke="#223388" stroke-width="2" fill="url(#line)"/>
+                <text x="10" y="17" fill="white">Ext.form.TimerField</text>
+            </g>
+            <g transform="translate(90,60)">
+                <rect x="0" y="0" width="150" height="25" rx="5" ry="5"
+                    stroke="#223388" stroke-width="2" fill="url(#line)"/>
+                <text x="10" y="17" fill="white">Ext.form.DateField</text>
+            </g>
+        </g>
+    </g>
+</svg>

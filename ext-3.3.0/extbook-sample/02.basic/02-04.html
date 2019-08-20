@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>02.basic</title>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all-debug.js"></script>
+        <script type="text/javascript">
+Ext.onReady(function() {
+    var panel = new Ext.Panel({
+        el: 'test',
+        title: '测试标题',
+        floating: true,
+        shadow: true,
+        draggable: true,
+        collapsible: true,
+        html: '测试内容',
+        pageX: 100,
+        pageY: 50,
+        width: 200,
+        height: 150
+    });
+    panel.render();
+});
+        </script>
+    </head>
+    <body>
+        <div id="test"></div>
+    </body>
+</html>

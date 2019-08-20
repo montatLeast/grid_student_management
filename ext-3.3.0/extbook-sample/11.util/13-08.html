@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="../../resources/css/ext-all.css" type="text/css">
+    <script src="../../adapter/ext/ext-base.js"></script>
+    <script src="../../ext-all-debug.js"></script>
+    <title>11.util</title>
+    <script type="text/javascript">
+Ext.onReady(function() {
+    var collection = new Ext.util.MixedCollection();
+    collection.on('add', function(index, o, key) {
+        alert("在" + index + "添加了数据" + o + "，key为" + key);
+    });
+    collection.on('clear', function() {
+        alert("集合数据被清空");
+    });
+    collection.on('remove', function(o, key) {
+        alert("删除了数据" + o + "，key为" + key);
+    });
+    collection.on('replace', function(key, oldObject, newObject) {
+        alert("修改了key为" + key + "的数据" + newObject + "，修改前的值为" + oldObject);
+    });
+
+    Ext.get('add').on('click', function() {
+        collection.add(new Date().getTime());
+    });
+    Ext.get('clear').on('click', function() {
+        collection.clear();
+    });
+    Ext.get('remove').on('click', function() {
+        collection.removeAt(0);
+    });
+    Ext.get('replace').on('click', function() {
+        collection.replace(0, new Date().toLocaleString());
+    });
+
+});
+    </script>
+  </head>
+  <body>
+    <button id="add">add</button>
+    <button id="clear">clear</button>
+    <button id="remove">remove</button>
+    <button id="replace">replace</button>
+    <div id="result"></div>
+  </body>
+</html>

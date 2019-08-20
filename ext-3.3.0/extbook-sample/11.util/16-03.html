@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="../../resources/css/ext-all.css" type="text/css">
+    <script src="../../adapter/ext/ext-base.js"></script>
+    <script src="../../ext-all-debug.js"></script>
+    <title>11.util</title>
+    <script type="text/javascript">
+Ext.onReady(function() {
+    var keyMap = new Ext.KeyMap('textarea', [{
+        key: Ext.EventObject.LEFT,
+        fn: function(e) {
+            keyMap.el.setWidth(keyMap.el.getWidth() - 10);
+        }
+    },{
+        key: Ext.EventObject.RIGHT,
+        fn: function(e) {
+            keyMap.el.setWidth(keyMap.el.getWidth() + 10);
+        }
+    },{
+        key: Ext.EventObject.UP,
+        fn: function(e) {
+            keyMap.el.setHeight(keyMap.el.getHeight() - 10);
+        }
+    },{
+        key: Ext.EventObject.DOWN,
+        fn: function(e) {
+            keyMap.el.setHeight(keyMap.el.getHeight() + 10);
+        }
+    }]);
+
+    Ext.get("dis").on('click', function() {
+        keyMap.disable();
+        Ext.get('result').update(keyMap.isEnabled());
+    });
+    Ext.get('en').on('click', function() {
+        keyMap.enable();
+        Ext.get('result').update(keyMap.isEnabled());
+    });
+});
+    </script>
+  </head>
+  <body>
+    <button id="dis">disable</button>
+    <button id="en">enable</button>
+    <span id="result"></span>
+    <br />
+    <textarea id="textarea"></textarea>
+  </body>
+</html>

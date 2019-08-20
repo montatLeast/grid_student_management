@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all-debug.js"></script>
+        <script type="text/javascript" src="localXHR.js"></script>
+        <title>09.menu</title>
+        <script type="text/javascript">
+Ext.onReady(function(){
+    // 创建工具条
+    var tb = new Ext.Toolbar();
+    tb.render('toolbar');
+
+    var menuHistory = new Ext.menu.Menu({
+        items: [
+            {text: '今天'},
+            {text: '昨天'},
+            {text: '一周'},
+            {text: '一月'},
+            {text: '一年'}
+        ]
+    });
+
+    var menuFile = new Ext.menu.Menu({
+        items: [
+            {text: '新建'},
+            {text: '打开'},
+            {text: '保存'},
+            {text: '另存...'},
+            '-',
+            {text: '历史', menu: menuHistory},
+            '-',
+            {text: '关闭'}
+        ]
+    });
+
+    var menuOperator = new Ext.menu.Menu({
+        items: [
+            {text: '增加'},
+            {text: '删除'},
+            {text: '修改'}
+        ]
+    });
+
+    // 为工具条添加4个按钮
+    tb.add({
+        text: '文件',
+        menu: menuFile
+    },{
+        text: '操作',
+        menu: menuOperator
+    });
+
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+        <div id="toolbar"></div>
+    </body>
+</html>

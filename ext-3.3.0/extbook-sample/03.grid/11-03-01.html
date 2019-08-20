@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>03.grid</title>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all.js"></script>
+        <script type="text/javascript">
+Ext.onReady(function(){
+
+    Ext.grid.PropertyGrid.prototype.initComponent = function(){
+        this.customEditors = this.customEditors || {};
+        this.lastEditRow = null;
+        var store = new Ext.grid.PropertyStore(this);
+        this.propStore = store;
+        var cm = new Ext.grid.PropertyColumnModel(this, store);
+        //store.store.sort('name', 'ASC');
+        this.addEvents(
+            'beforepropertychange',
+            'propertychange'
+        );
+        this.cm = cm;
+        this.ds = store.store;
+        Ext.grid.PropertyGrid.superclass.initComponent.call(this);
+
+        this.selModel.on('beforecellselect', function(sm, rowIndex, colIndex){
+            if(colIndex === 0){
+                this.startEditing.defer(200, this, [rowIndex, 1]);
+                return false;
+            }
+        }, this);
+    };
+
+    var grid = new Ext.grid.PropertyGrid({
+        title: '属性表格',
+        autoHeight: true,
+        width: 300,
+        renderTo: 'grid',
+        source: {
+            "名字": "不告诉你",
+            "创建时间": new Date(Date.parse('12/15/2007')),
+            "是否有效": false,
+            "版本号": .01,
+            "描述": "嗯，估计没啥可说的"
+        }
+    });
+
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+        <div id="grid"></div>
+    </body>
+</html>

@@ -1,0 +1,59 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>07.window</title>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all.js"></script>
+        <script type="text/javascript">
+Ext.onReady(function(){
+
+    var tabs = new Ext.TabPanel({
+        region: 'center',
+        margins:'3 3 3 0',
+        activeTab: 0,
+        defaults:{autoScroll:true},
+
+        items:[{
+            title: '默认',
+            html: '内容'
+        },{
+            title: '标签',
+            html: '内容'
+        },{
+            title: '可关闭',
+            html: '内容',
+            closable:true
+        }]
+    });
+
+    var nav = new Ext.Panel({
+        title: '导航',
+        region: 'west',
+        split: true,
+        width: 200,
+        collapsible: true,
+        margins:'3 0 3 3',
+        cmargins:'3 3 3 3'
+    });
+
+    var win = new Ext.Window({
+        title: '复杂布局',
+        closable:true,
+        width:600,
+        height:350,
+        border:false,
+        layout: 'border',
+
+        items: [nav, tabs]
+    });
+
+    win.show();
+
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+    </body>
+</html>

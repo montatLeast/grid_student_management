@@ -1,0 +1,7 @@
+<root>
+    <node text="node 1">
+        <sub text="sub node 1" leaf="true"/>
+    </node>
+    <node text="node 2" leaf="true"/>
+    <node text="node 3" leaf="true"/>
+</root>

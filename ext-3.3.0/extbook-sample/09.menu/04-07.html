@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all-debug.js"></script>
+        <script type="text/javascript" src="localXHR.js"></script>
+        <title>09.menu</title>
+        <script type="text/javascript">
+Ext.onReady(function(){
+    // 创建工具条
+    var tb = new Ext.Toolbar();
+    tb.render('toolbar');
+
+    tb.add('<span style="color:red;font-weight:bold;">红字</span>');
+    tb.add('<img src="user_male.png" />');
+    tb.add('<input type="text">');
+    tb.add('<button>按钮</button>');
+
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+        <div id="toolbar"></div>
+    </body>
+</html>

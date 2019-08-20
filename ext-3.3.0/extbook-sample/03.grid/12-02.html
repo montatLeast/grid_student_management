@@ -1,0 +1,66 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>03.grid</title>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all-debug.js"></script>
+        <script type="text/javascript">
+Ext.onReady(function(){
+
+    Ext.QuickTips.init();
+
+    var meta = [
+        {header:'编号',dataIndex:'id', name:'id'},
+        {header:'性别',dataIndex:'sex', name:'sex'},
+        {header:'名称',dataIndex:'name', name:'name'},
+        {header:'描述',dataIndex:'descn', name:'descn'}
+    ];
+
+    var data = [
+        ['1','male','name1','descn1'],
+        ['2','female','name2','descn2'],
+        ['3','male','name3','descn3'],
+        ['4','female','name4','descn4'],
+        ['5','male','name5','descn5']
+    ];
+
+    var grid = new Ext.grid.GridPanel({
+        store: new Ext.data.GroupingStore({
+            reader: new Ext.data.ArrayReader({}, meta),
+            data: data,
+            groupField: 'sex',
+            sortInfo: {field: 'id', direction: "ASC"}
+        }),
+        columns: meta,
+        view: new Ext.grid.GroupingView(),
+        renderTo: 'grid',
+        autoHeight: true
+    });
+
+    Ext.get('expand').on('click', function() {
+        grid.getView().expandAllGroups();
+    });
+    Ext.get('collapse').on('click', function() {
+        grid.getView().collapseAllGroups();
+    });
+    Ext.get('toggle').on('click', function() {
+        grid.getView().toggleAllGroups();
+    });
+    Ext.get('one').on('click', function() {
+        var view = grid.getView();
+        var groupId = view.getGroupId('female');
+        view.toggleGroup(groupId);
+    });
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+        <button id="expand">expand</button>
+        <button id="collapse">collapse</button>
+        <button id="toggle">toggle</button>
+        <button id="one">toggle one</button>
+        <div id="grid"></div>
+    </body>
+</html>

@@ -1,0 +1,61 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all-debug.js"></script>
+        <script type="text/javascript" src="localXHR.js"></script>
+        <title>03.grid</title>
+        <script type="text/javascript">
+Ext.onReady(function(){
+
+    function renderMotif(data, cell, record, rowIndex, columnIndex, store){
+        var value = record.get('color')
+         //cell.css = "UnStyleCss";
+         cell.attr = "style=background-color:" + value;
+         return data;
+    }
+
+    var cm = new Ext.grid.ColumnModel([
+        {header: 'name', dataIndex: 'name'},
+        {header: 'sex', dataInex: 'sex'},
+        {header: 'color', dataIndex: 'color', renderer: renderMotif}
+    ]);
+
+    var PersonRecord = Ext.data.Record.create([
+        {name: 'name', type: 'string'},
+        {name: 'sex', type: 'int'},
+        {name: 'color', type: 'string'}
+    ]);
+
+    var data = [
+        ['boy', 0, '#FBF8BF'],
+        ['girl', 1, '#FBF8BF'],
+        ['man', 0, '#FBF8BF'],
+        ['woman', 1, '#FBF8BF']
+    ];
+
+    var store = new Ext.data.Store({
+        proxy: new Ext.data.MemoryProxy(data),
+        reader: new Ext.data.ArrayReader({}, PersonRecord)
+    });
+    store.load();
+
+    var grid = new Ext.grid.GridPanel({
+        store: store,
+        cm: cm,
+        autoHeight: true,
+        renderTo: 'grid',
+        viewConfig : {
+            forceFit : true
+        }
+    });
+
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+        <div id="grid"></div>
+    </body>
+</html>

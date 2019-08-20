@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>04.form</title>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all.js"></script>
+        <script type="text/javascript">
+Ext.onReady(function(){
+
+    // HtmlEditor需要这个
+    Ext.QuickTips.init();
+
+    var grid = new Ext.grid.GridPanel({
+        width: 300,
+        autoHeight: true,
+        title: 'grid',
+        store: new Ext.data.SimpleStore({
+            data: [
+                ['name1','female','descn1'],
+                ['name2','male','descn2']
+            ],
+            fields: ['name','sex','descn']
+        }),
+        columns: [
+            {header:'姓名',dataIndex:'name'},
+            {header:'性别',dataIndex:'sex'},
+            {header:'备注',dataIndex:'descn'}
+        ],
+        viewConfig: {
+            forceFit: true
+        }
+    });
+
+    var selectMenu = new Ext.menu.Menu({
+        items: [new Ext.menu.Adapter(grid)]
+    });
+
+    var field = new Ext.form.TriggerField({
+        fieldLabel: '选择',
+        name: 'name',
+        onSelect: function(record){
+        },
+        onTriggerClick: function() {
+            if (this.menu == null) {
+                this.menu = selectMenu;
+            }
+            this.menu.show(this.el, "tl-bl?");
+        }
+    });
+
+    grid.on('rowclick', function(grid, rowIndex, e) {
+        selectMenu.hide();
+        field.setValue(rowIndex);
+    });
+
+
+    var form = new Ext.form.FormPanel({
+        title: 'form',
+        frame: true,
+        items: [field],
+        renderTo: 'form'
+    });
+
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+        <div id="form" style="margin:20px;"></div>
+    </body>
+</html>

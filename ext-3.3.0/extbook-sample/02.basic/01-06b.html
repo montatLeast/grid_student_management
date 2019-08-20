@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>02.basic</title>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all.js"></script>
+        <script type="text/javascript">
+Ext.onReady(function() {
+    Ext.get(document.body).on('mousewheel', function(e) {
+        var delta = e.getWheelDelta();
+
+        var test = Ext.get('test');
+        var width = test.getWidth();
+        test.setWidth(width + delta * 500, true);
+    });
+});
+        </script>
+    </head>
+    <body>
+        <div id="test" style="background-color:red;">测试文字</div>
+    </body>
+</html>

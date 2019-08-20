@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>11.util</title>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all.js"></script>
+    </head>
+    <body>
+        <div>&nbsp;#1</div>
+        <div name="bar">name="bar"</div>
+        <div>&nbsp;#2</div>
+        <div name="bbb">name="bbb"</div>
+        <div>&nbsp;#3</div>
+        <div name="rrr">name="rrr"</div>
+        <div>&nbsp;#4</div>
+        <div name="aaa">name="aaa"</div>
+        <div>&nbsp;#5</div>
+        <button onclick="Ext.select('*[name]').highlight()">Ext.query('*[name]')</button>
+        <br>
+        <button onclick="Ext.select('*[name=bar]').highlight()">Ext.query('*[name=bar]')</button>
+        <br>
+        <button onclick="Ext.select('*[name!=bar]', false, document.body).highlight()">Ext.query('*[name!=bar]')</button>
+        <br>
+        <button onclick="Ext.select('*[name^=b]').highlight()">Ext.query('*[name^=b]')</button>
+        <br>
+        <button onclick="Ext.select('*[name$=r]').highlight()">Ext.query('*[name$=r]')</button>
+        <br>
+        <button onclick="Ext.select('*[name*=a]').highlight()">Ext.query('*[name*=a]')</button>
+        <br>
+    </body>
+</html>

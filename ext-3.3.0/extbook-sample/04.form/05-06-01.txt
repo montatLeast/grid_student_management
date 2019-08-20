@@ -1,0 +1,1 @@
+{success:false,errors:{text1:'有问题一',text2:'有问题二'}}

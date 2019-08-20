@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>03.grid</title>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all.js"></script>
+        <script type="text/javascript">
+Ext.onReady(function(){
+    var meta = [
+        {header:'编号',dataIndex:'id', name: 'id'},
+        {header:'名称',dataIndex:'name', name: 'name'},
+        {header:'描述',dataIndex:'descn', name: 'descn'},
+        {header:'日期',dataIndex:'date', name: 'date', type: 'date', dateFormat: 'Y-m-dTH:i:s', renderer: Ext.util.Format.dateRenderer('Y-m-d')}
+    ];
+
+    var data = [
+        ['1','name1','descn1','1970-01-15T02:58:04'],
+        ['2','name2','descn2','1970-01-15T02:58:04'],
+        ['3','name3','descn3','1970-01-15T02:58:04'],
+        ['4','name4','descn4','1970-01-15T02:58:04'],
+        ['5','name5','descn5','1970-01-15T02:58:04']
+    ];
+
+    var grid = new Ext.grid.GridPanel({
+        height: 80,
+        width: 450,
+        renderTo: 'grid',
+        store: new Ext.data.Store({
+            autoLoad: true,
+            proxy: new Ext.data.MemoryProxy(data),
+            reader: new Ext.data.ArrayReader({}, meta)
+        }),
+        columns: meta,
+        viewConfig: {
+            columnsText: '显示的列',
+            scrollOffset: 30,
+            sortAscText: '升序',
+            sortDescText: '升序',
+            forceFit: true
+        }
+    });
+
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+        <div id="grid"></div>
+    </body>
+</html>

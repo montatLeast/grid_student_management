@@ -1,0 +1,8 @@
+<div id='div' style="background-color:green;"><b>with javascript</b></div>
+<script type='text/javascript'>
+Ext.get('div').setWidth(100, {
+    duration: 2,
+    callback: this.highlight,
+    scope: this
+});
+</script>

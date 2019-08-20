@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="../../resources/css/ext-all.css" type="text/css">
+    <script src="../../adapter/ext/ext-base.js"></script>
+    <script src="../../ext-all-debug.js"></script>
+    <title>11.util</title>
+    <script type="text/javascript">
+Ext.onReady(function() {
+    var keyMap = new Ext.KeyMap('textarea', {
+        key: Ext.EventObject.LEFT,
+        fn: function(e) {
+            keyMap.el.setWidth(keyMap.el.getWidth() - 10);
+        }
+    });
+});
+    </script>
+  </head>
+  <body>
+    <textarea id="textarea"></textarea>
+  </body>
+</html>

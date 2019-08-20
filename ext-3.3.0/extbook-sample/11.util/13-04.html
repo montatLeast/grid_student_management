@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="../../resources/css/ext-all.css" type="text/css">
+    <script src="../../adapter/ext/ext-base.js"></script>
+    <script src="../../ext-all-debug.js"></script>
+    <title>11.util</title>
+    <script type="text/javascript">
+Ext.onReady(function() {
+    var collection = new Ext.util.MixedCollection();
+    //
+    collection.addAll(["11", "22", "33", "44", "55"]);
+    var result = Ext.getDom('result');
+    result.innerHTML += collection.first() + "<br />";
+    result.innerHTML += collection.last() + "<br />";
+    result.innerHTML += collection.getCount() + "<br />";
+    result.innerHTML += collection.get(1) + "<br />";
+    result.innerHTML += collection.indexOf("33") + "<br />";
+});
+    </script>
+  </head>
+  <body>
+    <div id="result"></div>
+  </body>
+</html>

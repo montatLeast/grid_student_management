@@ -1,0 +1,67 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>07.window</title>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all.js"></script>
+        <script type="text/javascript">
+Ext.onReady(function(){
+
+    var cm = new Ext.grid.ColumnModel([
+        {header:'编号',dataIndex:'id'},
+        {header:'名称',dataIndex:'name'},
+        {header:'描述',dataIndex:'descn'}
+    ]);
+
+    var data = [
+        ['1','name1','descn1'],
+        ['2','name2','descn2'],
+        ['3','name3','descn3'],
+        ['4','name4','descn4'],
+        ['5','name5','descn5']
+    ];
+
+    var ds = new Ext.data.Store({
+        proxy: new Ext.data.MemoryProxy(data),
+        reader: new Ext.data.ArrayReader({}, [
+            {name: 'id'},
+            {name: 'name'},
+            {name: 'descn'}
+        ])
+    });
+    ds.load();
+
+    var grid = new Ext.grid.GridPanel({
+        el: 'grid',
+        ds: ds,
+        cm: cm,
+        layout:'fit'
+    });
+    //grid.render();
+
+    var win = new Ext.Window({
+        el:'window-win',
+        layout:'fit',
+        width:500,
+        height:300,
+        closeAction:'hide',
+
+        items: [grid],
+
+        buttons: [{
+            text:'按钮'
+        }]
+    });
+    win.show();
+
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+        <div id="window-win">
+            <div id="grid"></div>
+        </div>
+    </body>
+</html>

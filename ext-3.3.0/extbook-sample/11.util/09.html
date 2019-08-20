@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>11.util</title>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all.js"></script>
+        <script type="text/javascript" src="localXHR.js"></script>
+        <script type="text/javascript">
+Ext.onReady(function() {
+    var css = Ext.util.CSS;
+    css.createStyleSheet("*{color:blue}", "x");
+    alert(css.getRule("*"));
+    alert(css.getRules());
+    css.refreshCache();
+    css.getRule("*", true);
+    css.getRule(true);
+    css.updateRule("*", "color", "red");
+    css.removeStyleSheet("x");
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+        <h1>标题</h1>
+        <p>内容</p>
+    </body>
+</html>

@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>05.tree</title>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all.js"></script>
+        <script type="text/javascript" src="localXHR.js"></script>
+        <script type="text/javascript" src="../tree/ColumnNodeUI.js"></script>
+        <link rel="stylesheet" type="text/css" href="../tree/column-tree.css" />
+        <script type="text/javascript">
+Ext.onReady(function(){
+
+    var tree = new Ext.tree.ColumnTree({
+        width: 550,
+        height: 300,
+        rootVisible:false,
+        autoScroll:true,
+        title: '示例',
+        renderTo: 'tree',
+
+        columns:[{
+            header:'任务',
+            width:330,
+            dataIndex:'task'
+        },{
+            header:'持续时间',
+            width:100,
+            dataIndex:'duration'
+        },{
+            header:'负责人',
+            width:100,
+            dataIndex:'user'
+        }],
+
+        loader: new Ext.tree.TreeLoader({
+            dataUrl:'13-01.txt',
+            uiProviders:{
+                'col': Ext.tree.ColumnNodeUI
+            }
+        }),
+
+        root: new Ext.tree.AsyncTreeNode({
+            text:'Tasks'
+        })
+    });
+
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+        <div id="tree" style="height:300px;"></div>
+    </body>
+</html>

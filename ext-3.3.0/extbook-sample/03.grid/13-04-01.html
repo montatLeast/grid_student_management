@@ -1,0 +1,79 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>03.grid</title>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all-debug.js"></script>
+        <script type="text/javascript" src="localXHR.js"></script>
+        <script type="text/javascript">
+Ext.onReady(function(){
+
+    var cm = new Ext.grid.ColumnModel([
+        {header:'编号',dataIndex:'id'},
+        {header:'名称',dataIndex:'name'},
+        {header:'描述',dataIndex:'descn'}
+    ]);
+
+    var data = [
+        ['1','name1','descn1'],
+        ['2','name2','descn2'],
+        ['3','name3','descn3'],
+        ['4','name4','descn4'],
+        ['5','name5','descn5']
+    ];
+
+    var store = new Ext.data.Store({
+        proxy: new Ext.data.MemoryProxy(data),
+        reader: new Ext.data.ArrayReader({}, [
+            {name: 'id'},
+            {name: 'name'},
+            {name: 'descn'}
+        ])
+    });
+    store.load();
+
+    var grid = new Ext.grid.GridPanel({
+        autoHeight: true,
+        renderTo: 'grid',
+        store: store,
+        cm: cm,
+        enableDragDrop: true
+    });
+
+    var ddrow = new Ext.dd.DropTarget(grid.view.mainBody, {
+        ddGroup : 'GridDD',
+        copy    : false,
+        notifyDrop : function(dd, e, data){
+        }
+    });
+
+    var tree = new Ext.tree.TreePanel({
+        el: 'tree',
+        ddGroup: 'GridDD',
+        enableDD: true,
+        loader: new Ext.tree.TreeLoader({dataUrl: '03-04.txt'})
+    });
+
+    var root = new Ext.tree.AsyncTreeNode({
+        text: '偶是根'
+    });
+    tree.setRootNode(root);
+    tree.render();
+    root.expand();
+
+    tree.on('nodedragover', function(e) {
+    });
+    tree.on('beforenodedrop', function(e){
+    });
+
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+        <div id="grid" style="margin:50px; float:left; width:300px; height:300px; border:1px solid red;"></div>
+        <div id="tree" style="margin:50px; float:left; width:300px; height:300px;"></div>
+    </body>
+</html>
+

@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all-debug.js"></script>
+        <script type="text/javascript" src="localXHR.js"></script>
+        <title>10.store</title>
+        <script type="text/javascript">
+Ext.onReady(function(){
+    var conn = new Ext.data.Connection({
+        autoAbort: false,
+        defaultHeaders: {
+            referer: 'http://localhost:8080/'
+        },
+        disableCaching : false,
+        extraParams : {
+            name: 'name'
+        },
+        method : 'GET',
+        timeout : 300,
+        url : '01.txt'
+    });
+    conn.request({
+        success: function(response) {
+            Ext.Msg.alert('info', response.responseText);
+        },
+        failure: function() {
+            Ext.Msg.alert('warn', 'failure');
+        }
+    });
+
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+        <div id="toolbar"></div>
+    </body>
+</html>

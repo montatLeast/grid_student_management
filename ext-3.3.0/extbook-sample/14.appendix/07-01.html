@@ -1,0 +1,56 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all-debug.js"></script>
+        <title>ext</title>
+        <script type="text/javascript">
+var dad = {
+    name: 'Dad'
+};
+
+alert('老爸的名字是：' + dad.name);
+
+var children = [
+    'Lala',
+    'Sasa',
+    'Dudu'
+];
+
+alert('一共有' + children.length + '个孩子。');
+alert('第一个孩子是：' + children[0]);
+
+var mum = {
+    name: 'Mum',
+    birthday: new Date(1982, 9, 2),
+    age: 26,
+    hasJob: true,
+    husband: dad,
+    likes: children
+};
+
+var dadData = '{name:"Dad"}';
+var childrenData = '["Lala", "Sasa", "Dudu"]';
+
+dad = Ext.decode(dadData);
+children = Ext.decode(childrenData);
+alert(dad.name);
+alert(children);
+
+var str = Ext.encode(mum);
+alert(str);
+
+var spec = {
+    'first name': 'Lingo',
+    名字: '临远'
+};
+var specData = Ext.encode(spec);
+alert(specData);
+alert(encodeURIComponent(Ext.encode(spec)));
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+    </body>
+</html>

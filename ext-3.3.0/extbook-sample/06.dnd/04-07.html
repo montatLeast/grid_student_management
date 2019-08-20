@@ -1,0 +1,79 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>06.dnd</title>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all.js"></script>
+        <style type="text/css">
+.dd-demo {
+    position:relative;
+    border:4px solid #666;
+    text-align:center;
+    color:#fff;
+    cursor:move;
+    height:100px;
+    width:100px;
+}
+
+#dd-demo-1 {
+    background:url(img/circle.gif) 0 0 no-repeat;
+    border:0px solid black;
+    z-index:10;
+    cursor:default;
+}
+
+#dd-demo-2 {
+    background:#A0B9A6;
+    top:10px; left:180px;
+    border:0px solid black;
+    cursor:default;
+}
+        </style>
+        <script type="text/javascript">
+Ext.onReady(function(){
+    var clickRadius = 46;
+
+    var el = Ext.get("dd-demo-1");
+    startPos = el.getXY();
+
+    dd = new Ext.dd.DD(el);
+
+    dd.clickValidator = function(e) {
+
+        var el = this.getEl();
+        var region = Ext.get(el).getRegion();
+
+        var r = clickRadius;
+
+        var x1 = e.getPageX(), y1 = e.getPageY();
+
+        var x2 = Math.round((region.right+region.left)/2);
+        var y2 = Math.round((region.top+region.bottom)/2);
+
+        e.preventDefault();
+
+        return ( ((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2)) <= r*r );
+    };
+
+    dd.onDragDrop = function(e, id) {
+        Ext.get(this.getEl()).setXY(Ext.get(id).getXY());
+    }
+
+    dd.onInvalidDrop = function(e) {
+        Ext.get(this.id).moveTo(startPos[0], startPos[1], true);
+    }
+
+    dd2 = new Ext.dd.DDTarget("dd-demo-2");
+
+
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+        <h1>Drag and Drop Circle</h1>
+        <div id="dd-demo-1" class="dd-demo"><br />DD</div>
+        <div id="dd-demo-2" class="dd-demo">DDTarget</div>
+    </body>
+</html>

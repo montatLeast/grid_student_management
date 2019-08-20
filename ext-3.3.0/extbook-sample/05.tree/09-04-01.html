@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>05.tree</title>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all-debug.js"></script>
+        <script type="text/javascript" src="localXHR.js"></script>
+        <script type="text/javascript">
+Ext.onReady(function(){
+
+    var tree1 = new Ext.tree.TreePanel({
+        el: 'tree1',
+        enableDrag: true,
+        loader: new Ext.tree.TreeLoader({dataUrl: '06-01.txt'})
+    });
+    var root1 = new Ext.tree.AsyncTreeNode({
+        id: '0',
+        text: '偶是根一'
+    });
+    tree1.setRootNode(root1);
+    tree1.render();
+    root1.expand();
+
+    var tree2 = new Ext.tree.TreePanel({
+        el: 'tree2',
+        enableDrop: true,
+        loader: new Ext.tree.TreeLoader({dataUrl: '06-01.txt'})
+    });
+    var root2 = new Ext.tree.AsyncTreeNode({
+        id: '2',
+        text: '偶是根二'
+    });
+    tree2.setRootNode(root2);
+    tree2.render();
+    root2.expand();
+
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+        <div id="tree1" style="height:300px;margin:50px;float:left;"></div>
+        <div id="tree2" style="height:300px;margin:50px;float:left;"></div>
+    </body>
+</html>

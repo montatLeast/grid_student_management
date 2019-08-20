@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all-debug.js"></script>
+        <script type="text/javascript" src="localXHR.js"></script>
+        <title>10.store</title>
+        <script type="text/javascript">
+Ext.onReady(function(){
+
+    var ds = new Ext.data.SimpleStore({
+        data: [
+            ['id1','name1','descn1'],
+            ['id2','name2','descn2']
+        ],
+        fields: ['id','name','descn']
+    });
+
+    var ds = new Ext.data.JsonStore({
+        url: 'xxx.jsp',
+        root: 'root',
+        fields: ['id','name','descn']
+    });
+
+    var ds = new Ext.data.GroupingStore({
+        data: [
+            ['id1','name1','female','descn1'],
+            ['id2','name2','male','descn2'],
+            ['id3','name3','female','descn3'],
+            ['id4','name4','male','descn4'],
+            ['id5','name5','female','descn5']
+        ],
+        reader: new Ext.data.ArrayReader({
+            fields: ['id','name','sex','descn']
+        }),
+        groupField: 'sex',
+        groupOnSort: true
+    });
+    ds.groupBy('id');
+    ds.clearGrouping();
+
+
+
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+        <div id="grid"></div>
+    </body>
+</html>

@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="../../resources/css/ext-all.css" type="text/css">
+    <script src="../../adapter/ext/ext-base.js"></script>
+    <script src="../../ext-all-debug.js"></script>
+    <title>11.util</title>
+    <script type="text/javascript">
+Ext.onReady(function() {
+    var collection = new Ext.util.MixedCollection();
+    //
+    collection.addAll([{name:"11"}, {name:"22"}, {name:"33"}, {name:"44"}, {name:"55"}]);
+    var result = Ext.getDom('result');
+    result.innerHTML += collection.find(function(o) {
+        return o.name == '11';
+    }) + "<br />";
+    result.innerHTML += collection.findIndex("name", "1") + "<br />";
+    result.innerHTML += collection.findIndexBy(function(o) {
+        return o.name == '11';
+    }) + "<br />";
+});
+    </script>
+  </head>
+  <body>
+    <div id="result"></div>
+  </body>
+</html>

@@ -1,0 +1,76 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all-debug.js"></script>
+        <script type="text/javascript" src="localXHR.js"></script>
+        <title>10.store</title>
+        <script type="text/javascript">
+Ext.onReady(function(){
+    var PersonRecord = Ext.data.Record.create([
+        {name: 'name', type: 'string'},
+        {name: 'sex', type: 'int'}
+    ]);
+
+    var data = [
+        ['boy', 0],
+        ['girl', 1]
+    ];
+
+    var store = new Ext.data.Store({
+        proxy: new Ext.data.MemoryProxy(data),
+        reader: new Ext.data.ArrayReader({}, PersonRecord)
+    });
+    store.load();
+    //
+    alert(store.getAt(0).get('name'));
+    //
+    for (var i = 0; i < store.getCount(); i++) {
+        var record = store.getAt(i);
+        alert(record.get('name'));
+    }
+    //
+    store.each(function(record) {
+        alert(record.get('name'));
+    });
+    //
+    var records = store.getRange(0, 1);
+    for (var i = 0; i < records.length; i++) {
+        var record = records[i];
+        alert(record.get('name'));
+    }
+    //
+    alert(store.getById(1001).get('name'));
+    //
+    var index;
+    index = store.find('name','g');
+    alert(store.getAt(index).get('name'));
+    index = store.findBy(function(record, id) {
+        return record.get('name') == 'girl' && record.get('sex') == 1;
+    });
+    alert(store.getAt(index).get('name'));
+    //
+    alert(store.query('name', 'boy'));
+    alert(store.queryBy(function(record) {
+        return record.get('name') == 'girl' && record.get('sex') == 1;
+    }));
+
+    var grid = new Ext.grid.GridPanel({
+        store: store,
+        columns: [
+            {header: 'name', dataIndex: 'name'},
+            {header: 'sex', dataInex: 'sex'}
+        ],
+        autoHeight: true,
+        renderTo: 'grid'
+    });
+
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+        <div id="grid"></div>
+    </body>
+</html>

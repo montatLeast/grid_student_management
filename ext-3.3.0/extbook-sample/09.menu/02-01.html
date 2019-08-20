@@ -1,0 +1,69 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all-debug.js"></script>
+        <script type="text/javascript" src="localXHR.js"></script>
+        <title>09.menu</title>
+        <script type="text/javascript">
+Ext.onReady(function(){
+    // 创建工具条
+    var tb = new Ext.Toolbar();
+    tb.render('toolbar');
+
+    var menu1 = new Ext.menu.Menu({
+        items: [
+            {text: '新新一'},
+            {text: '新新二'},
+            {text: '新新三'},
+        ]
+    });
+
+    var menu2 = new Ext.menu.Menu({
+        items: [
+            {text: '删删一'},
+            {text: '删删二'},
+            {text: '删删三'},
+        ]
+    });
+
+    var menu3 = new Ext.menu.Menu({
+        items: [
+            {text: '改改一'},
+            {text: '改改二'},
+            {text: '改改三'},
+        ]
+    });
+
+    var menu4 = new Ext.menu.Menu({
+        items: [
+            {text: '显显一'},
+            {text: '显显二'},
+            {text: '显显三'},
+        ]
+    });
+
+    // 为工具条添加4个按钮
+    tb.add({
+        text: '新建',
+        menu: menu1
+    },{
+        text: '修改',
+        menu: menu2
+    },{
+        text: '删除',
+        menu: menu3
+    },{
+        text: '显示',
+        menu: menu4
+    });
+
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+        <div id="toolbar"></div>
+    </body>
+</html>

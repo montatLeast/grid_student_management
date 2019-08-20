@@ -1,0 +1,136 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>03.grid</title>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all.js"></script>
+        <script type="text/javascript">
+Ext.onReady(function(){
+
+    var cm = new Ext.grid.ColumnModel([
+        {header:'编号',dataIndex:'id',editor:new Ext.grid.GridEditor(new Ext.form.TextField({
+            allowBlank: false
+        }))},
+        {header:'名称',dataIndex:'name',editor:new Ext.grid.GridEditor(new Ext.form.TextField({
+            allowBlank: false
+        }))},
+        {header:'描述',dataIndex:'descn',editor:new Ext.grid.GridEditor(new Ext.form.TextField({
+            allowBlank: false
+        }))}
+    ]);
+
+    var data = [
+        ['1','name1','descn1'],
+        ['2','name2','descn2'],
+        ['3','name3','descn3'],
+        ['4','name4','descn4'],
+        ['5','name5','descn5']
+    ];
+
+    var store = new Ext.data.Store({
+        proxy: new Ext.data.MemoryProxy(data),
+        reader: new Ext.data.ArrayReader({}, [
+            {name: 'id'},
+            {name: 'name'},
+            {name: 'descn'}
+        ])
+    });
+
+    var Record = Ext.data.Record.create([
+        {name: 'id', type: 'string'},
+        {name: 'name', type: 'string'},
+        {name: 'descn', type: 'string'}
+    ]);
+    store.load();
+
+    var grid = new Ext.grid.EditorGridPanel({
+        autoHeight: true,
+        renderTo: 'grid',
+        store: store,
+        cm: cm,
+        tbar: new Ext.Toolbar(['-', {
+            text: '添加一行',
+            handler: function(){
+
+                var initValue = {id:'',name:'',descn:''};
+
+                var p = new Record(initValue);
+
+                grid.stopEditing();
+                store.insert(0, p);
+                grid.startEditing(0, 0);
+
+                p.dirty = true;
+                p.modified = initValue;
+                if(store.modified.indexOf(p) == -1){
+                    store.modified.push(p);
+                }
+            }
+        }, '-', {
+            text: '删除一行',
+            handler: function(){
+                Ext.Msg.confirm('信息', '确定要删除？', function(btn){
+                    if (btn == 'yes') {
+                        var sm = grid.getSelectionModel();
+                        var cell = sm.getSelectedCell();
+
+                        var record = store.getAt(cell[0]);
+                        store.remove(record);
+                    }
+                });
+            }
+        }, '-', {
+            text: '保存',
+            handler: function(){
+                var m = store.modified.slice(0);
+                for (var i = 0; i < m.length; i++) {
+                    var record = m[i];
+                    var fields = record.fields.keys;
+
+                    for (var j = 0; j < fields.length; j++) {
+                        var name = fields[j];
+                        var value = record.data[name];
+
+                        var colIndex = cm.findColumnIndex(name);
+                        var rowIndex = store.indexOfId(record.id);
+                        var editor = cm.getCellEditor(colIndex).field;
+
+                        if (!editor.validateValue(value)) {
+                            Ext.Msg.alert('提示', '请确保输入的数据正确。', function(){
+                                grid.startEditing(rowIndex, colIndex);
+                            });
+                            return;
+                        }
+                    }
+                }
+                // 进行到这里，说明数据都是有效的
+                var jsonArray = [];
+                Ext.each(m, function(item) {
+                    jsonArray.push(item.data);
+                });
+
+                Ext.lib.Ajax.request(
+                    'POST',
+                    'grid2.jsp',
+                    {success: function(response){
+                        Ext.Msg.alert('信息', response.responseText, function(){
+                            store.reload();
+                        });
+                    },failure: function(){
+                        Ext.Msg.alert("错误", "与后台联系的时候出现了问题");
+                    }},
+                    'data=' + encodeURIComponent(Ext.encode(jsonArray))
+                );
+            }
+        }, '-'])
+    });
+
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+        <div id="grid" style="height:300px;"></div>
+    </body>
+</html>

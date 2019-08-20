@@ -1,0 +1,99 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>03.grid</title>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all.js"></script>
+        <script type="text/javascript">
+Ext.onReady(function(){
+
+    var comboData = [
+        ['0','新版ext教程'],
+        ['1','ext在线支持'],
+        ['2','ext扩展']
+    ];
+
+    var cm = new Ext.grid.ColumnModel([{
+        header:'数字列',
+        dataIndex:'number',
+        editor:new Ext.grid.GridEditor(new Ext.form.NumberField({
+            allowBlank: false,
+            allowNegative: false,
+            maxValue: 10
+        }))
+    },{
+        header:'选择列',
+        dataIndex:'combo',
+        editor:new Ext.grid.GridEditor(new Ext.form.ComboBox({
+            store: new Ext.data.SimpleStore({
+                fields:['value','text'],
+                data: comboData
+            }),
+            emptyText: '请选择',
+            mode: 'local',
+            triggerAction: 'all',
+            valueField: 'value',
+            displayField: 'text',
+            readOnly:true
+        })),
+        renderer: function(value){
+            return comboData[value][1];
+        }
+    },{
+        header:'日期列',
+        dataIndex:'date',
+        editor:new Ext.grid.GridEditor(new Ext.form.DateField({
+            format: 'Y-m-d',
+            minValue: '2007-12-14',
+            disabledDays: [0, 6],
+            disabledDaysText: '只能选择工作日'
+        })),
+        renderer: function(value) {
+            return value.format("Y-m-d");
+        }
+    },{
+        header:'判断列',
+        dataIndex:'check',
+        editor:new Ext.grid.GridEditor(new Ext.form.Checkbox({
+            allowBlank: false
+        })),
+        renderer:function(value) {
+            return value ? '是' : '否';
+        }
+    }]);
+
+    // 放到grid里显示的原始数据
+    var data = [
+        [1.1,1,new Date(),true],
+        [2.2,2,new Date(),false],
+        [3.3,0,new Date(),true],
+        [4.4,1,new Date(),false],
+        [5.5,2,new Date(),true]
+    ];
+
+    var store = new Ext.data.Store({
+        proxy: new Ext.data.MemoryProxy(data),
+        reader: new Ext.data.ArrayReader({}, [
+            {name: 'number'},
+            {name: 'combo'},
+            {name: 'date'},
+            {name: 'check'}
+        ])
+    });
+    store.load();
+
+    var grid = new Ext.grid.EditorGridPanel({
+        autoHeight: true,
+        renderTo: 'grid',
+        store: store,
+        cm: cm
+    });
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+        <div id="grid" style="height:300px;"></div>
+    </body>
+</html>

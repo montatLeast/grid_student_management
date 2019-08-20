@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>05.tree</title>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all-debug.js"></script>
+        <script type="text/javascript" src="localXHR.js"></script>
+        <script type="text/javascript">
+Ext.onReady(function(){
+
+    var tree = new Ext.tree.TreePanel({
+        loader: new Ext.tree.TreeLoader({
+            dataUrl: '10-01.txt'
+        }),
+        root: new Ext.tree.AsyncTreeNode({
+            id: '0',
+            text: '根'
+        }),
+        autoHeight: true,
+        renderTo: 'tree'
+    });
+
+    tree.expandAll();
+
+    var treeFilter = new Ext.tree.TreeFilter(tree, {
+        clearBlank: true,
+        autoClear: true
+    });
+
+    Ext.get('clearAll').on('click', function() {
+        treeFilter.clear();
+    });
+    Ext.get('select').on('click', function() {
+        treeFilter.filter('02');
+    });
+
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+        <div id="tree"></div>
+        <button id="clearAll">全部显示</button>
+        <button id="select">只显示“02”</button>
+    </body>
+</html>

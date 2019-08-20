@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>11.util</title>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all.js"></script>
+        <style type="text/css">
+.red {
+    background: red;
+}
+        </style>
+        <script type="text/javascript">
+function appendChildren() {
+    Ext.DomHelper.append('parent', {
+        tag: 'ul',
+        style: 'background: white;list-style-type: disc;padding: 20px;',
+        children: [
+            {tag: 'li', html: 'li1'},
+            {tag: 'li', html: 'li2'},
+            {tag: 'li', html: 'li3'}
+        ]
+    });
+}
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+        <input type="button" value="append" onclick="Ext.DomHelper.append('parent', {tag: 'p', cls: 'red', html: 'append child'})">
+        <input type="button" value="insertBefore" onclick="Ext.DomHelper.insertBefore('parent', {tag: 'p', cls: 'red', html: 'insert before child'})">
+        <input type="button" value="insertAfter" onclick="Ext.DomHelper.insertAfter('parent', {tag: 'p', cls: 'red', html: 'insert after child'})">
+        <input type="button" value="overwrite" onclick="Ext.DomHelper.overwrite('child3', {tag: 'p', cls: 'red', html: 'overwrite child'})">
+        <input type="button" value="appendChildren" onclick="appendChildren()">
+        <div id="parent" style="border: 1px solid black;padding: 5px;margin: 5px;background: lightgray;">
+          <p id="child1">child1</p>
+          <p id="child2">child2</p>
+          <div id="child3">
+            <p id="child5">inner child</p>
+          </div>
+          <p id="child3">child4</p>
+        </div>
+    </body>
+</html>

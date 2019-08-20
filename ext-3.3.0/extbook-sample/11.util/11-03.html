@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="../../resources/css/ext-all.css" type="text/css">
+    <script src="../../adapter/ext/ext-base.js"></script>
+    <script src="../../ext-all-debug.js"></script>
+    <title>11.util - Delayed Task Bug</title>
+    <script type="text/javascript">
+Ext.onReady(function() {
+    var viewport = new Ext.Viewport({
+        layout: "border",
+        items:[{
+            region: "center",
+            autoScroll: true,
+            html: ""
+        }]
+    });
+
+    var time_display = "";
+    function recall() {
+        var t = new Date();
+        time_display += t.toLocaleString() + "<br>";
+        viewport.items.itemAt(0).body.update(time_display);
+        delay.delay(3000);
+    }
+    var delay = new Ext.util.DelayedTask(function(){recall();});
+    delay.delay(3000);
+});
+    </script>
+  </head>
+  <body></body>
+</html>

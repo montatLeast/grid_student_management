@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all-debug.js"></script>
+        <script type="text/javascript" src="localXHR.js"></script>
+        <title>09.menu</title>
+        <script type="text/javascript">
+Ext.onReady(function(){
+    // 创建工具条
+    var tb = new Ext.Toolbar();
+    tb.render('toolbar');
+
+    function line() {
+        menuButton.handler = line;
+        menuButton.setText('直线');
+        Ext.Msg.alert('工具', '直线');
+    }
+
+    function rect() {
+        menuButton.handler = rect;
+        menuButton.setText('矩形');
+        Ext.Msg.alert('工具', '矩形');
+    }
+
+    function circle() {
+        menuButton.handler = circle;
+        menuButton.setText('圆形');
+        Ext.Msg.alert('工具', '圆形');
+    }
+
+    var menuButton = new Ext.Toolbar.MenuButton({
+        text: '选择一个工具',
+        handler: function() {
+            if(menuButton.menu && !menuButton.menu.isVisible()){
+                menuButton.menu.show(this.el, menuButton.menuAlign);
+            }
+        },
+        menu: {
+            items: [
+                {text: '直线', handler: line},
+                {text: '矩形', handler: rect},
+                {text: '圆形', handler: circle}
+            ]
+        }
+    });
+
+    tb.add(menuButton);
+
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+        <div id="toolbar"></div>
+    </body>
+</html>

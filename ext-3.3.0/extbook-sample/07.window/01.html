@@ -1,0 +1,80 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>07.window</title>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all.js"></script>
+        <script type="text/javascript">
+Ext.onReady(function(){
+
+    Ext.MessageBox.alert('标题', '内容', function(btn) {
+        alert('你刚刚点击了 ' + btn);
+    });
+
+    Ext.MessageBox.confirm('选择框', '你到底是选择yes还是no？', function(btn) {
+        alert('你刚刚点击了 ' + btn);
+    });
+
+    Ext.MessageBox.prompt('输入框', '随便输入一些东西', function(btn, text) {
+        alert('你刚刚点击了 ' + btn + '，刚刚输入了 ' + text);
+    });
+
+    Ext.MessageBox.show({
+        title: '多行输入框',
+        msg: '你可以输入好几行',
+        width:300,
+        buttons: Ext.MessageBox.OKCANCEL,
+        multiline: true,
+        fn: function(btn, text) {
+            alert('你刚刚点击了 ' + btn + '，刚刚输入了 ' + text);
+        }
+    });
+
+    Ext.MessageBox.show({
+        title:'随便按个按钮',
+        msg: '从三个按钮里随便选择一个',
+        buttons: Ext.MessageBox.YESNOCANCEL,
+        fn: function(btn) {
+            alert('你刚刚点击了 ' + btn);
+        }
+    });
+
+    Ext.MessageBox.show({
+        title: '请等待',
+        msg: '读取数据中',
+        width:240,
+        progress:true,
+        closable:false
+    });
+    var f = function(v){
+        return function(){
+            if(v == 11){
+                Ext.MessageBox.hide();
+            }else{
+                Ext.MessageBox.updateProgress(v/10, '正在读取第 ' + v + ' 个，一共10个。');
+            }
+       };
+    };
+    for(var i = 1; i < 12; i++){
+       setTimeout(f(i), i*1000);
+    }
+
+    Ext.MessageBox.show({
+        title:'随便按个按钮',
+        msg: '从三个按钮里随便选择一个',
+        buttons: Ext.MessageBox.YESNOCANCEL,
+        fn: function(btn) {
+            alert('你刚刚点击了 ' + btn);
+        },
+        animEl: 'dialog'
+    });
+
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+        <div id="dialog"></div>
+    </body>
+</html>

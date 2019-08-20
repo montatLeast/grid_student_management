@@ -1,0 +1,84 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all-debug.js"></script>
+        <script type="text/javascript" src="localXHR.js"></script>
+        <title>09.menu</title>
+        <script type="text/javascript">
+Ext.onReady(function(){
+    // 创建工具条
+    var tb = new Ext.Toolbar();
+    tb.render('toolbar');
+
+    var menuHistory = new Ext.menu.Menu({
+        id: 'menu1',
+        allowOtherMenus: true,
+        items: [
+            {text: '今天'},
+            {text: '昨天'},
+            {text: '一周'},
+            {text: '一月'},
+            {text: '一年'}
+        ]
+    });
+
+    var menuFile = new Ext.menu.Menu({
+        id: 'menu2',
+        allowOtherMenus: true,
+        items: [
+            {text: '新建'},
+            {text: '打开'},
+            {text: '保存'},
+            {text: '另存...'},
+            '-',
+            {text: '历史', menu: menuHistory},
+            '-',
+            {text: '关闭'}
+        ]
+    });
+
+    var menuOperator = new Ext.menu.Menu({
+        id: 'menu3',
+        allowOtherMenus: true,
+        items: [
+            {text: '增加'},
+            {text: '删除'},
+            {text: '修改'}
+        ]
+    });
+
+    // 为工具条添加4个按钮
+    tb.add({
+        text: '文件',
+        menu: menuFile
+    },{
+        text: '操作',
+        menu: menuOperator
+    });
+
+    Ext.get("showButton").on("click", function() {
+        var menu1 = Ext.menu.MenuMgr.get("menu1");
+        menu1.show(tb.el);
+        var menu2 = Ext.menu.MenuMgr.get("menu2");
+        menu2.show(tb.el);
+        var menu3 = Ext.menu.MenuMgr.get("menu3");
+        menu3.show(menu2.el);
+		Ext.getDoc().removeAllListeners();
+    });
+
+    Ext.get('hideButton').on('click', function() {
+        Ext.menu.MenuMgr.hideAll();
+    });
+
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+        <div id="toolbar"></div>
+        <button id="showButton">show button</button>
+        <button id="hideButton">hide button</button>
+    </body>
+</html>

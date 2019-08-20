@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>ext-2.2</title>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all.js"></script>
+        <script type="text/javascript">
+Ext.BLANK_IMAGE_URL = '../../resources/images/default/s.gif';
+
+Ext.onReady(function(){
+
+    Ext.History.init();
+
+    var win = new Ext.Window({
+        title: 'window',
+        width: 300,
+        height: 100
+    });
+
+    win.on('move', function(component, x, y) {
+        Ext.History.add(x + "," + y);
+    });
+
+    Ext.History.on('change', function(token) {
+        if (token) {
+            var position = token.split(",");
+            win.setPagePosition(position[0], position[1]);
+        }
+    });
+
+    win.show();
+
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+
+        <form id="history-form" class="x-hidden">
+            <input type="hidden" id="x-history-field" />
+            <iframe id="x-history-frame"></iframe>
+        </form>
+    </body>
+</html>

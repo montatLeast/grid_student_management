@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all-debug.js"></script>
+        <script type="text/javascript" src="localXHR.js"></script>
+        <title>09.menu</title>
+        <script type="text/javascript">
+Ext.onReady(function(){
+    // 创建工具条
+    var tb = new Ext.Toolbar();
+    tb.render('toolbar');
+
+    var menu = new Ext.menu.Menu({
+        items: [
+            new Ext.menu.DateItem({
+                text: '日期'
+            }),
+            new Ext.menu.ColorItem({
+                text: '颜色'
+            })
+        ]
+    });
+
+    tb.add({
+        text: '日期',
+        menu: new Ext.menu.DateMenu({
+            handler : function(dp, date){
+                Ext.Msg.alert('选择日期', '选择的日期是 ' + date.format('Y年m月d日'));
+            }
+        })
+    }, {
+        text: '颜色',
+        menu: new Ext.menu.ColorMenu({
+            handler : function(cm, color){
+                if (typeof color == 'string') {
+                    Ext.Msg.alert('选择颜色', '选择的颜色是 ' + color);
+                }
+            }
+        })
+    }, {
+        text: '日期/颜色',
+        menu: menu
+    });
+
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+        <div id="toolbar"></div>
+    </body>
+</html>

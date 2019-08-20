@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>11.util</title>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all.js"></script>
+        <script type="text/javascript">
+var param = null;
+alert("param = null, isEmpty: " + Ext.isEmpty(param));
+delete param;
+alert("param = undefined, isEmpty: " + Ext.isEmpty(param));
+var param = '';
+alert("param = '', isEmpty: " + Ext.isEmpty(param));
+alert("param = '', allowBlank, isEmpty: " + Ext.isEmpty(param, true));
+param = [];
+alert("param = [], isEmpty: " + Ext.isEmpty(param));
+param = {};
+alert("param = {}, isEmpty: " + Ext.isEmpty(param));
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

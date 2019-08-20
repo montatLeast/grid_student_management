@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>08.layout</title>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all-debug.js"></script>
+        <script type="text/javascript" src="localXHR.js"></script>
+        <script type="text/javascript">
+Ext.onReady(function(){
+
+    var viewport = new Ext.Viewport({
+        layout:'absolute',
+        items:[{
+            title: 'panel 1',
+            html: 'panel 1',
+            x: 50,
+            y: 0,
+            anchor: '-200 40%'
+        },{
+            title: 'panel 2',
+            html: 'panel 2',
+            x: 200,
+            y: 10,
+            anchor: '-50 60%'
+        }]
+    });
+
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+    </body>
+</html>

@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>11.util</title>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all.js"></script>
+        <script type="text/javascript" src="localXHR.js"></script>
+        <script type="text/javascript">
+Ext.onReady(function() {
+
+    Ext.get('updatePlain').on('click', function() {
+        Ext.get('result').getUpdater().update({
+            url: '07-02.html'
+        });
+    });
+
+    Ext.get('updateJavascript').on('click', function() {
+        Ext.get('result').getUpdater().update({
+            url: '07-03.html',
+            scripts: true
+        });
+    });
+
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+        <div style="align:center; width:300px; margin:50px;">
+            <button id="updatePlain"><b>变化成静态页面</b></button>
+            <button id="updateJavascript"><b>变化成带javascript的页面</b></button>
+        </div>
+        <div id="result">&nbsp;</div>
+    </body>
+</html>

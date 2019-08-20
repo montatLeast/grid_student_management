@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>03.grid</title>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all.js"></script>
+        <script type="text/javascript">
+Ext.onReady(function(){
+
+    var grid = new Ext.grid.PropertyGrid({
+        title: '属性表格',
+        autoHeight: true,
+        width: 300,
+        renderTo: 'grid',
+        customEditors: {
+            'Start Time': new Ext.grid.GridEditor(new Ext.form.TimeField({selectOnFocus:true}))
+        },
+        source: {
+            'Start Time': '10:00 AM'
+        }
+    });
+
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+        <div id="grid"></div>
+    </body>
+</html>

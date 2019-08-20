@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>05.tree</title>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all.js"></script>
+        <style type="text/css">
+.x-tree-node-leaf .icon-male {
+    background-image: url(user_male.png)
+}
+        </style>
+        <script type="text/javascript">
+Ext.onReady(function(){
+
+    var tree = new Ext.tree.TreePanel({
+        el:'tree'
+    });
+
+    var root = new Ext.tree.TreeNode({
+        text: 'icon',
+        icon: 'user_female.png'
+    });
+    var node1 = new Ext.tree.TreeNode({
+        text: 'iconCls',
+        iconCls: 'icon-male'
+    });
+    var node2 = new Ext.tree.TreeNode({
+        text: 'icon + iconCls',
+        icon: 'user_female.png',
+        iconCls: 'icon-male'
+    });
+    root.appendChild(node1);
+    root.appendChild(node2);
+
+    tree.setRootNode(root);
+    tree.render();
+
+    root.expand(true, true);
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+        <div id="tree" style="height:300px;"></div>
+    </body>
+</html>

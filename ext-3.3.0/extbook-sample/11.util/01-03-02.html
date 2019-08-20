@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>11.util</title>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all.js"></script>
+        <style type="text/css">
+.red {
+    background: red;
+}
+        </style>
+        <script type="text/javascript">
+function selectP() {
+    var array = Ext.query('p');
+    for (var i = 0; i < array.length; i++) {
+        Ext.get(array[i]).highlight();
+    }
+}
+
+function selectDiv() {
+    var array = Ext.query('div.red');
+    for (var i = 0; i < array.length; i++) {
+        Ext.get(array[i]).highlight();
+    }
+}
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+        <input type="button" value="select('p')" onclick="selectP()">
+        <input type="button" value="select('div.red')" onclick="selectDiv()">
+        <p>p1</p>
+        <br>
+        <div class="red">div.red1</div>
+        <br>
+        <p>p2</p>
+        <br>
+        <div class="red">div.red2</div>
+        <br>
+        <p>p3</p>
+        <br>
+    </body>
+</html>

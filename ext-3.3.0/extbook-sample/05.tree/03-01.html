@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>05.tree</title>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all-debug.js"></script>
+        <script type="text/javascript" src="localXHR.js"></script>
+        <script type="text/javascript">
+Ext.onReady(function(){
+
+    var tree = new Ext.tree.TreePanel({
+        el: 'tree',
+        loader: new Ext.tree.TreeLoader({dataUrl: '01-04-01.txt'})
+    });
+
+    var root = new Ext.tree.AsyncTreeNode({
+        id: '0',
+        text: '我是根'
+    });
+
+    tree.setRootNode(root);
+    tree.render();
+
+    root.expand();
+
+    var contextmenu = new Ext.menu.Menu({
+        id: 'theContextMenu',
+        items: [{
+            text: '有本事点我哦！',
+            handler: function(){
+                alert('我被击中了，啊。。。');
+            }
+        }]
+    });
+    tree.on("contextmenu", function(node, e){
+        e.preventDefault();
+        node.select();
+        contextmenu.showAt(e.getXY());
+    });
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+        <div id="tree" style="height:300px;"></div>
+    </body>
+</html>

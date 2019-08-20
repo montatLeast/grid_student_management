@@ -1,0 +1,90 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>06.dnd</title>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all.js"></script>
+        <style type="text/css">
+body {
+    padding: 20px;
+}
+
+.dd-demo {
+    position:relative;
+    border:4px solid #666;
+    text-align:center;
+    color:#fff;
+    cursor:move;
+    height:60px;
+    width:60px;
+}
+
+.dd-demo .dd-handle {
+    background: #003366;
+    cursor:move;
+}
+
+.dd-demo .dd-multi-handle-1 {
+    background: #336699; float: left;
+    cursor:move;
+}
+
+.dd-demo .dd-multi-handle-2 {
+    background: #336699; float: right;
+    cursor:move;
+}
+
+.dd-outer-handle {
+    position:relative;
+    background: red;
+    cursor:move;
+    height: 20px;
+    width: 3em;
+    text-align:center;
+    top:-50px; left:400px;
+}
+
+.dd-demo-em {
+    border:4px solid purple;
+}
+
+#dd-demo-1 {
+    background-color:#6D739A;top:100px; left:105px;
+}
+
+#dd-demo-2 {
+    background-color:#566F4E;top:150px; left:245px;
+}
+
+#dd-demo-3 {
+    background-color:#7E5B60;top:-50px; left:385px;
+}
+        </style>
+        <script type="text/javascript">
+Ext.onReady(function(){
+    dd1 = new Ext.dd.DD("dd-demo-1");
+        dd1.setHandleElId("dd-handle-1a");
+        dd1.setHandleElId("dd-handle-1b");
+    dd2 = new Ext.dd.DD("dd-demo-2");
+        dd2.setHandleElId("dd-handle-2");
+    dd3 = new Ext.dd.DD("dd-demo-3");
+        dd3.setOuterHandleElId("dd-handle-3");
+
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+        <h1>Drag and Drop Handles</h1>
+        <div id="dd-demo-1" class="dd-demo">
+            <div id="dd-handle-1a" class="dd-multi-handle-1">H1</div>
+            <div id="dd-handle-1b" class="dd-multi-handle-2">H2</div>
+        </div>
+        <div id="dd-demo-2" class="dd-demo">
+            <div id="dd-handle-2" class="dd-handle">H</div>
+        </div>
+        <div id="dd-handle-3" class="dd-outer-handle">Outer</div>
+        <div id="dd-demo-3" class="dd-demo"></div>
+    </body>
+</html>

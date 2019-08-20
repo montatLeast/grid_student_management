@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application xmlns="http://ns.adobe.com/air/application/1.0">
+    <id>examples.ext.Grid</id>
+    <version>0.1</version>
+    <filename>Grid</filename>
+    <initialWindow>
+        <content>index.html</content>
+        <visible>true</visible>
+        <width>400</width>
+        <height>400</height>
+    </initialWindow>
+</application>

@@ -1,0 +1,1 @@
+adt -certificate -cn family168 1024-RSA family168.pfx family168

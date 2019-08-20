@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all-debug.js"></script>
+        <script type="text/javascript" src="localXHR.js"></script>
+        <title>09.menu</title>
+        <script type="text/javascript">
+Ext.onReady(function(){
+    var form = new Ext.form.FormPanel({
+        title: '输入',
+        frame: true,
+        defaultType: 'textfield',
+        labelWidth: 50,
+        items: [{
+            fieldLabel: '名称',
+            name: 'name'
+        }],
+        buttons: [{
+            text: '确认'
+        }, {
+            text: '取消'
+        }]
+    });
+    var formItem = new Ext.menu.Adapter(form, {
+        hideOnClick: false
+    });
+
+    // 创建工具条
+    var tb = new Ext.Toolbar();
+    tb.render('toolbar');
+
+    var menu = new Ext.menu.Menu({
+        items: [formItem]
+    });
+
+    tb.add({
+        text: '表单菜单',
+        menu: menu
+    });
+
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+        <div id="toolbar"></div>
+    </body>
+</html>

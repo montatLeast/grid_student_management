@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>08.layout</title>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all-debug.js"></script>
+        <script type="text/javascript" src="../../build/locale/ext-lang-zh_CN.js"></script>
+        <script type="text/javascript">
+Ext.onReady(function(){
+    var store = new Ext.data.SimpleStore({
+        fields: ['id', 'name', 'desc'],
+        data: [
+            ['1', 'name1', 'desc1'],
+            ['2', 'name2', 'desc2'],
+            ['3', 'name3', 'desc3'],
+            ['4', 'name4', 'desc4'],
+            ['5', 'name5', 'desc5'],
+            ['6', 'name6', 'desc6'],
+            ['7', 'name7', 'desc7'],
+            ['8', 'name8', 'desc8'],
+            ['9', 'name9', 'desc9'],
+            ['10', 'name10', 'desc10']
+        ]
+    });
+    var grid = new Ext.grid.GridPanel({
+        title: 'grid',
+        viewConfig: {forceFit: true},
+        store: store,
+        columns: [
+            {header:'id', dataIndex: 'id'},
+            {header:'名称', dataIndex:'name'},
+            {header:'描述', dataIndex:'desc'}
+        ],
+        tbar: new Ext.Toolbar(['添加','修改','删除']),
+        bbar: new Ext.PagingToolbar({
+            pageSize: 15,
+            store: store
+        })
+    });
+    //grid.store.load();
+
+    var viewport = new Ext.Viewport({
+        layout: 'fit',
+        items: [{
+            title: 'panel',
+            html: 'panel'
+        },grid]
+    });
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+    </body>
+</html>

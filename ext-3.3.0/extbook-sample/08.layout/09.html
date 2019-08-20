@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>08.layout</title>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all.js"></script>
+        <script type="text/javascript" src="localXHR.js"></script>
+        <script type="text/javascript">
+Ext.onReady(function(){
+
+    var viewport = new Ext.Viewport({
+        layout:'fit',
+        items:[{
+            title: 'Table Layout',
+            layout:'table',
+            defaults: {
+                bodyStyle:'padding:20px'
+            },
+            layoutConfig: {
+                columns: 3
+            },
+            items: [{
+                html: '<p>Cell A content</p>',
+                rowspan: 2
+            },{
+                html: '<p>Cell B content</p>',
+                colspan: 2
+            },{
+                html: '<p>Cell C content</p>'
+            },{
+                html: '<p>Cell D content</p>'
+            }]
+        }]
+    });
+
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+    </body>
+</html>

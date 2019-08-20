@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="400" height="500" viewBox="0 0 400 500" style="font-weight:bold;font-family:arial,'lucida console',sans-serif,黑体;font-size:14px;">
+    <defs>
+        <linearGradient id="line" x1="50%" x2="50%" y1="0%" y2="100%">
+            <stop offset="20%" stop-color="#88AAEE"/>
+            <stop offset="100%" stop-color="#224499"/>
+        </linearGradient>
+        <marker id="arrow" markerWidth="10" markerHeight="8" refX="4" refY="4" orient="auto">
+            <path d="M0,0 8,4 0,8Z" fill="white" stroke="black"/>
+        </marker>
+        <g id="bg">
+            <rect x="0" y="0" width="10" height="10" rx="5" ry="5"
+                stroke="#223388" stroke-width="2" fill="url(#line)"/>
+        </g>
+    </defs>
+    <rect x="0" y="0" width="400" height="500" fill="white"/>
+    <rect x="90" y="150" width="240" height="200" fill="lightgray" stroke-dasharray="3" stroke-width="2" stroke="black"/>
+    <g transform="translate(10,10)">
+        <g transform="translate(100,0)">
+            <circle cx="100" cy="50" r="55" stroke="#223388" stroke-width="2" fill="url(#line)"/>
+            <text x="50" y="55" fill="white">onInvalidDrag</text>
+            <line x1="60" y1="90" x2="45" y2="110" stroke="black" marker-end="url(#arrow)"/>
+        </g>
+        <g transform="translate(0,100)">
+            <circle cx="100" cy="50" r="55" stroke="#223388" stroke-width="2" fill="url(#line)"/>
+            <text x="55" y="55" fill="white">onDragEnter</text>
+            <line x1="140" y1="90" x2="155" y2="110" stroke="black" marker-end="url(#arrow)"/>
+        </g>
+        <g transform="translate(100,200)">
+            <circle cx="100" cy="50" r="55" stroke="#223388" stroke-width="2" fill="url(#line)"/>
+            <text x="55" y="55" fill="white">onDragOver</text>
+            <line x1="140" y1="10" x2="155" y2="-10" stroke="black" marker-end="url(#arrow)"/>
+        </g>
+        <g transform="translate(200,100)">
+            <circle cx="100" cy="50" r="55" stroke="#223388" stroke-width="2" fill="url(#line)"/>
+            <text x="60" y="55" fill="white">onDragOut</text>
+            <line x1="60" y1="10" x2="45" y2="-10" stroke="black" marker-end="url(#arrow)"/>
+        </g>
+    </g>
+</svg>

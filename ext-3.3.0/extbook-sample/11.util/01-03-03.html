@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>11.util</title>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all.js"></script>
+    </head>
+    <body>
+        <div id="bar" class="foo">
+            I'm a div ==> my id: bar, my class: foo
+            <span class="bar">I'm a span within the div with a foo class</span>
+            <a href="http://www.extjs.com" target="_blank">An ExtJs link</a>
+        </div>
+        <div id="foo" class="bar">
+            my id: foo, my class: bar
+            <p>I'm a P tag within the foo div</p>
+            <span class="bar">I'm a span within the div with a bar class</span>
+            <a href="#">An internal link</a>
+        </div>
+        <button onclick="Ext.select('span').highlight()">Ext.query('span')</button>
+        <br>
+        <button onclick="Ext.select('span', false, 'foo').highlight()">Ext.query('span', 'foo')</button>
+        <br>
+        <button onclick="Ext.select('#foo').highlight()">Ext.query('#foo')</button>
+        <br>
+        <button onclick="Ext.select('.foo').highlight()">Ext.query('.foo')</button>
+        <br>
+        <button onclick="Ext.select('*').highlight()">Ext.query('*')</button>
+        <br>
+        <button onclick="Ext.select('div p').highlight()">Ext.query('div p')</button>
+        <br>
+        <button onclick="Ext.select('div, p').highlight()">Ext.query('div, p')</button>
+        <br>
+    </body>
+</html>

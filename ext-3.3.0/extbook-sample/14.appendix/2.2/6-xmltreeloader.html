@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>ext-2.2</title>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all.js"></script>
+
+        <script type="text/javascript" src="localXHR.js"></script>
+        <script type="text/javascript" src="../tree/XmlTreeLoader.js"></script>
+        <script type="text/javascript">
+Ext.BLANK_IMAGE_URL = '../../resources/images/default/s.gif';
+
+Ext.onReady(function(){
+
+    var tree = new Ext.tree.TreePanel({
+        autoHeight: true,
+        loader: new Ext.ux.XmlTreeLoader({
+            dataUrl: '6-xmltreeloader.xml',
+            processAttributes : function(attr){
+                if (attr.tagName == 'node') {
+                    attr.loaded = true;
+                }
+            }
+        }),
+        root: new Ext.tree.AsyncTreeNode({
+            text: 'root'
+        })
+    });
+    tree.render(document.body);
+    tree.expandAll();
+});
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

@@ -1,0 +1,70 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>03.grid</title>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all.js"></script>
+        <script type="text/javascript">
+Ext.data.Store.prototype.applySort = function() {
+    if (this.sortInfo && !this.remoteSort) {
+        var s = this.sortInfo, f = s.field;
+        var st = this.fields.get(f).sortType;
+        var fn = function(r1, r2) {
+            var v1 = st(r1.data[f]), v2 = st(r2.data[f]);
+            if (typeof(v1) == "string") {
+                return v1.localeCompare(v2);
+            }
+            return v1 > v2 ? 1 : (v1 < v2 ? -1 : 0);
+        };
+        this.data.sort(s.direction, fn);
+        if(this.snapshot && this.snapshot != this.data) {
+            this.snapshot.sort(s.direction, fn);
+        }
+    }
+};
+
+
+Ext.onReady(function(){
+
+    var cm = new Ext.grid.ColumnModel([
+        {header:'编号',dataIndex:'id',sortable:true,width:35},
+        {header:'名称',dataIndex:'name',sortable:true,width:80},
+        {id:'descn',header:'描述',dataIndex:'descn',sortable:true,width:200}
+    ]);
+
+    var data = [
+        ['1','啊','descn1'],
+        ['2','啵','descn2'],
+        ['3','呲','descn3'],
+        ['4','嘚','descn4'],
+        ['5','咯','descn5']
+    ];
+
+    var store = new Ext.data.Store({
+        proxy: new Ext.data.MemoryProxy(data),
+        reader: new Ext.data.ArrayReader({}, [
+            {name: 'id'},
+            {name: 'name'},
+            {name: 'descn'}
+        ]),
+        sortInfo: {field: "name", direction: "ASC"}
+    });
+    store.load();
+
+    var grid = new Ext.grid.GridPanel({
+        autoHeight: true,
+        renderTo: 'grid',
+        store: store,
+        cm: cm,
+        autoExpandColumn: 'descn'
+    });
+
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+        <div id="grid"></div>
+    </body>
+</html>

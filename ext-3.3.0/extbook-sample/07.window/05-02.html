@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>07.window</title>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all.js"></script>
+        <script type="text/javascript">
+Ext.onReady(function(){
+
+    var form = new Ext.form.FormPanel({
+        labelAlign: 'right',
+        labelWidth: 50,
+        frame: true,
+        defaultType: 'textfield',
+        items: [{
+            fieldLabel: '文本',
+            name: 'text'
+        },{
+            fieldLabel: '日期',
+            name: 'data',
+            xtype: 'datefield'
+        }]
+    });
+
+    var win = new Ext.Window({
+        el: 'window-win',
+        layout: 'fit',
+        width: 300,
+        title: 'form',
+        height: 150,
+        closeAction: 'hide',
+
+        items: [form],
+
+        buttons: [{
+            text:'按钮'
+        }]
+    });
+    win.show();
+
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+        <div id="window-win">
+            <div id="grid"></div>
+        </div>
+    </body>
+</html>

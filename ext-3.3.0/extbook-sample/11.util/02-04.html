@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>11.util</title>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all.js"></script>
+        <script type="text/javascript">
+Ext.onReady(function() {
+    var tpl = Ext.DomHelper.createTemplate(
+        {tag: "tr", children: [
+            {tag: 'td', html: '{0}'},
+            {tag: 'td', html: '{1}'},
+            {tag: 'td', html: '{2}'},
+            {tag: 'td', html: '{3}'}
+        ]}
+    );
+    tpl.compile();
+
+    var data = [
+        ['1','male','name1','descn1'],
+        ['2','female','name2','descn2'],
+        ['3','male','name3','descn3'],
+        ['4','female','name4','descn4'],
+        ['5','male','name5','descn5']
+    ];
+
+    for (var i = 0; i < data.length; i++) {
+        tpl.append('some-element', data[i]);
+    }
+
+});
+
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+        <table border="1">
+            <tbody id="some-element">
+                <tr>
+                    <td>id</td>
+                    <td>sex</td>
+                    <td>name</td>
+                    <td>descn</td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

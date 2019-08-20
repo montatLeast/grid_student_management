@@ -1,0 +1,75 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all-debug.js"></script>
+        <script type="text/javascript" src="localXHR.js"></script>
+        <title>09.menu</title>
+        <script type="text/javascript">
+Ext.onReady(function(){
+    // 创建工具条
+    var tb = new Ext.Toolbar();
+    tb.render('toolbar');
+
+    var menuCheckbox = new Ext.menu.Menu({
+        items: [
+            new Ext.menu.CheckItem({
+                text: '粗体',
+                checked: true,
+                checkHandler: function(item, checked) {
+                    Ext.Msg.alert('多选', (checked ? '选中' : '取消') + '粗体');
+                }
+            }),
+            new Ext.menu.CheckItem({
+                text: '斜体',
+                checkHandler: function(item, checked) {
+                    Ext.Msg.alert('多选', (checked ? '选中' : '取消') + '斜体');
+                }
+            })
+        ]
+    });
+
+    var menuRadio = new Ext.menu.Menu({
+        items: [
+            new Ext.menu.CheckItem({
+                text: '宋体',
+                group: 'font',
+                checked: true,
+                checkHandler: function(item, checked) {
+                    Ext.Msg.alert('多选', (checked ? '选中' : '取消') + '宋体');
+                }
+            }),
+            new Ext.menu.CheckItem({
+                text: '黑体',
+                group: 'font',
+                checkHandler: function(item, checked) {
+                    Ext.Msg.alert('多选', (checked ? '选中' : '取消') + '黑体');
+                }
+            }),
+            new Ext.menu.CheckItem({
+                text: '楷体',
+                group: 'font',
+                checkHandler: function(item, checked) {
+                    Ext.Msg.alert('多选', (checked ? '选中' : '取消') + '楷体');
+                }
+            })
+        ]
+    });
+
+    tb.add({
+        text: '字形',
+        menu: menuCheckbox
+    },{
+        text: '字体',
+        menu: menuRadio
+    });
+
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+        <div id="toolbar"></div>
+    </body>
+</html>

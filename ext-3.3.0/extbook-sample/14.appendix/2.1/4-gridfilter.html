@@ -1,0 +1,88 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>grid</title>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all.js"></script>
+
+        <script type="text/javascript" src="../grid-filtering/menu/EditableItem.js"></script>
+        <script type="text/javascript" src="../grid-filtering/menu/RangeMenu.js"></script>
+        <script type="text/javascript" src="../grid-filtering/grid/GridFilters.js"></script>
+        <script type="text/javascript" src="../grid-filtering/grid/filter/Filter.js"></script>
+        <script type="text/javascript" src="../grid-filtering/grid/filter/StringFilter.js"></script>
+        <script type="text/javascript" src="../grid-filtering/grid/filter/DateFilter.js"></script>
+        <script type="text/javascript" src="../grid-filtering/grid/filter/ListFilter.js"></script>
+        <script type="text/javascript" src="../grid-filtering/grid/filter/NumericFilter.js"></script>
+        <script type="text/javascript" src="../grid-filtering/grid/filter/BooleanFilter.js"></script>
+        <script type="text/javascript">
+Ext.onReady(function(){
+
+    Ext.menu.RangeMenu.prototype.icons = {
+        gt: '../grid-filtering/img/greater_then.png',
+        lt: '../grid-filtering/img/less_then.png',
+        eq: '../grid-filtering/img/equals.png'
+    };
+    Ext.grid.filter.StringFilter.prototype.icon = '../grid-filtering/img/find.png';
+
+    var filters = new Ext.grid.GridFilters({
+      filters:[
+        {type: 'numeric',  dataIndex: 'id'},
+        {type: 'string',  dataIndex: 'company'},
+        {type: 'numeric', dataIndex: 'price'},
+        {type: 'date',  dataIndex: 'date'},
+        {
+            type: 'list',
+            dataIndex: 'size',
+            options: ['small', 'medium', 'large', 'extra large'],
+            phpMode: true
+        },
+        {type: 'boolean', dataIndex: 'visible'}
+    ]});
+
+    var cm = new Ext.grid.ColumnModel([
+        {header:'编号',dataIndex:'id'},
+        {header:'公司',dataIndex:'company'},
+        {header:'价格',dataIndex:'price'},
+        {header:'日期',dataIndex:'date', renderer: Ext.util.Format.dateRenderer('Y-m-d')},
+        {header:'可见',dataIndex:'visible'},
+        {header:'大小',dataIndex:'size'}
+    ]);
+    cm.defaultSortable = true;
+
+    var data = [
+        ['1', 'company1', 1.1, new Date(), true, 1],
+        ['2', 'company2', 2.2, new Date(), false, 2],
+        ['3', 'company3', 3.3, new Date(), true, 3],
+        ['4', 'company4', 4.4, new Date(), false, 4],
+        ['5', 'company5', 5.5, new Date(), true, 5]
+    ];
+
+    var store = new Ext.data.Store({
+        proxy: new Ext.data.MemoryProxy(data),
+        reader: new Ext.data.ArrayReader({}, [
+            {name: 'id'},
+            {name: 'company'},
+            {name: 'price'},
+            {name: 'date'},
+            {name: 'visible'},
+            {name: 'size'}
+        ])
+    });
+    store.load();
+
+    var grid = new Ext.grid.GridPanel({
+        renderTo: 'grid',
+        store: store,
+        cm: cm,
+        plugins: filters
+    });
+
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+        <div id="grid" style="margin:10px;"></div>
+    </body>
+</html>

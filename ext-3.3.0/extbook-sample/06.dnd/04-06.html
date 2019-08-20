@@ -1,0 +1,61 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>06.dnd</title>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all.js"></script>
+        <style type="text/css">
+
+body { background: url("img/grid.png") }
+
+#dragDiv1 {
+    background:url(img/sq1.png) 0 0 no-repeat;background-color:#6D739A;
+    top:37px; left:113px;border:0px solid white;
+}
+
+#dragDiv2 {
+    background:url(img/sq2.png) 0 0 no-repeat;background-color:#566F4E;
+    top:162px; left:238px; border:0px solid white;
+}
+
+#dragDiv3 {
+    background:url(img/sq3.png) 0 0 no-repeat;background-color:#7E5B60;
+    top:287px; left:363px; border:0px solid white;
+}
+
+.testSquare {
+    border:4px solid #666666;
+    color:#FFFFFF;
+    cursor:move;
+    height:100px;
+    position:absolute;
+    text-align:center;
+    width:100px;
+}
+        </style>
+        <script type="text/javascript">
+Ext.onReady(function(){
+    dd1 = new Ext.dd.DD("dragDiv1");
+    dd1.setXConstraint(1000, 1000, 25);
+    dd1.setYConstraint(1000, 1000, 25);
+
+    dd2 = new Ext.dd.DD("dragDiv2");
+    dd2.setXConstraint(1000, 1000, 25);
+    dd2.setYConstraint(1000, 1000, 25);
+
+    dd3 = new Ext.dd.DD("dragDiv3");
+    dd3.setXConstraint(1000, 1000, 25);
+    dd3.setYConstraint(1000, 1000, 25);
+
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+        <h1>Drag and Drop Grid</h1>
+        <div id="dragDiv1" class="testSquare">Ext.dd.DD</div>
+        <div id="dragDiv2" class="testSquare">Ext.dd.DD</div>
+        <div id="dragDiv3" class="testSquare">Ext.dd.DD</div>
+    </body>
+</html>

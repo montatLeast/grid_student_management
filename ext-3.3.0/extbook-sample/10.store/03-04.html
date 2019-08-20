@@ -1,0 +1,81 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all-debug.js"></script>
+        <script type="text/javascript" src="localXHR.js"></script>
+        <title>10.store</title>
+        <script type="text/javascript">
+Ext.onReady(function(){
+    var PersonRecord = Ext.data.Record.create([
+        {name: 'name', type: 'string'},
+        {name: 'sex', type: 'int'}
+    ]);
+
+    var data = [
+        ['boy', 0],
+        ['girl', 1]
+    ];
+
+    var store = new Ext.data.Store({
+        proxy: new Ext.data.MemoryProxy(data),
+        reader: new Ext.data.ArrayReader({}, PersonRecord),
+        sortInfo: {field: 'name', direction: 'ASC'}
+    });
+    store.load();
+
+    store.add(new PersonRecord({
+        name: 'other',
+        sex: 0
+    }));
+
+    store.add([new PersonRecord({
+        name: 'other1',
+        sex: 0
+    }), new PersonRecord({
+        name: 'other2',
+        sex: 0
+    })]);
+
+    store.addSorted(new PersonRecord({
+        name: 'lili',
+        sex: 1
+    }));
+
+    store.insert(3, new PersonRecord({
+        name: 'other',
+        sex: 0
+    }));
+
+    store.insert(3, [new PersonRecord({
+        name: 'other1',
+        sex: 0
+    }), new PersonRecord({
+        name: 'other2',
+        sex: 0
+    })]);
+
+    store.remove(store.getAt(0));
+    // store.removeAll();
+
+    store.getAt(0).set('name', 'xxxx');
+
+    var grid = new Ext.grid.GridPanel({
+        store: store,
+        columns: [
+            {header: 'name', dataIndex: 'name',sortable: true},
+            {header: 'sex', dataInex: 'sex', sortable: true}
+        ],
+        autoHeight: true,
+        renderTo: 'grid'
+    });
+
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+        <div id="grid"></div>
+    </body>
+</html>

@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="../../resources/css/ext-all.css" type="text/css">
+    <script src="../../adapter/ext/ext-base.js"></script>
+    <script src="../../ext-all-debug.js"></script>
+    <title>11.util</title>
+    <script type="text/javascript">
+Ext.onReady(function() {
+    var collection = new Ext.util.MixedCollection();
+    //
+    collection.addAll([{name:"11"}, {name:"22"}, {name:"33"}, {name:"aa"}, {name:"bb"}]);
+    var collection1 = collection.clone();
+    var collection2 = collection.filter("name", /^\d+$/);
+    var collection3 = collection.filterBy(function(o) {
+        return /^\D+$/.test(o.name);
+    });
+    Ext.getDom('result').innerHTML += collection1.getCount() + "<br />";
+    Ext.getDom('result').innerHTML += collection2.getCount() + "<br />";
+    Ext.getDom('result').innerHTML += collection3.getCount() + "<br />";
+});
+    </script>
+  </head>
+  <body>
+    <div id="result"></div>
+  </body>
+</html>

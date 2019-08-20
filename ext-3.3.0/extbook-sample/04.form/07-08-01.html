@@ -1,0 +1,91 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>04.form</title>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all.js"></script>
+        <script type="text/javascript">
+Ext.onReady(function(){
+    var storeProvince = new Ext.data.Store({
+        proxy: new Ext.data.HttpProxy({url:'city.jsp?type=province'}),
+        reader: new Ext.data.ArrayReader({},[
+            {name:'value'},
+            {name:'text'}
+        ])
+    });
+    var storeCity = new Ext.data.Store({
+        proxy: new Ext.data.HttpProxy({url:'city.jsp?type=city'}),
+        reader: new Ext.data.ArrayReader({},[
+            {name:'value'},
+            {name:'text'}
+        ])
+    });
+    var storeCounty = new Ext.data.Store({
+        proxy: new Ext.data.HttpProxy({url:'city.jsp?type=county'}),
+        reader: new Ext.data.ArrayReader({},[
+            {name:'value'},
+            {name:'text'}
+        ])
+    });
+
+    var comboProvince = new Ext.form.ComboBox({
+        store: storeProvince,
+        emptyText: '请选择',
+        mode: 'local',
+        triggerAction: 'all',
+        valueField: 'value',
+        displayField: 'text',
+        readOnly: true,
+		applyTo: 'comboProvince'
+    });
+    var comboCity = new Ext.form.ComboBox({
+        store: storeCity,
+        emptyText: '请选择',
+        mode: 'local',
+        triggerAction: 'all',
+        valueField: 'value',
+        displayField: 'text',
+        readOnly: true,
+		applyTo: 'comboCity'
+    });
+    var comboCounty = new Ext.form.ComboBox({
+        store: storeCounty,
+        emptyText: '请选择',
+        mode: 'local',
+        triggerAction: 'all',
+        valueField: 'value',
+        displayField: 'text',
+        readOnly: true,
+		applyTo: 'comboCounty'
+    });
+
+    storeProvince.load();
+    comboProvince.on('select', function(comboBox){
+        var value = comboBox.getValue();
+        storeCity.load({params:{id:value}});
+    });
+    comboCity.on('select', function(comboBox){
+        var value = comboBox.getValue();
+        storeCounty.load({params:{id:value}});
+    });
+    comboCounty.on('select', function(comboBox){
+        alert(comboProvince.getValue() + '-' + comboCity.getValue() + '-' + comboCounty.getValue());
+    });
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+        <br /><br /><br />
+        <h3>唐山市简介</h3>
+        <br />
+        <p>唐山北依燕山，南滨渤海，地处北京、天津、承德、奏皇岛诸城市之间，地理位置优越，交通便捷。全市总面积13472平方公里，人口684万。</p>
+        <br /><br /><br />
+        <div style="text-align:center;">
+            <input id="comboProvince" type="text"/>
+            <input id="comboCity" type="text"/>
+            <input id="comboCounty" type="text"/>
+        </div>
+    </body>
+</html>

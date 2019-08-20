@@ -1,0 +1,84 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>02.basic</title>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all.js"></script>
+        <script type="text/javascript">
+Ext.onReady(function(){
+
+    var tabs = new Ext.TabPanel({
+        renderTo: 'tab',
+        height: 100,
+        enableTabScroll: true
+    });
+
+    tabs.add({
+        title: '标题1',
+        html: '内容1'
+    });
+    tabs.add({
+        title: '标题2',
+        html: '内容2',
+        closable: true
+    });
+
+    tabs.activate(0);
+
+    var addGrid = new Ext.Button({
+        text: '添加一个grid',
+        renderTo: 'add-grid',
+        handler: function(){
+            var id = Ext.id();
+            var grid = new Ext.grid.GridPanel({
+                store: new Ext.data.SimpleStore({
+                    fields: ['id','name'],
+                    data: [
+                        ['1','name1'],
+                        ['2','name2']
+                    ]
+                }),
+                columns: [
+                    {header:'序号',dataIndex:'id'},
+                    {header:'名称',dataIndex:'name'}
+                ]
+            });
+            var tab =  tabs.add({
+                title: '表格' + id,
+                closable: true,
+                layout: 'fit',
+                items: [grid]
+            });
+            tabs.activate(tab);
+        }
+    });
+    var addPanel = new Ext.Button({
+        text: '添加一个panel',
+        renderTo: 'add-panel',
+        handler: function(){
+            var id = Ext.id();
+            var panel = new Ext.Panel({
+                html: '这里边就是个Panel了。'
+            });
+            var tab =  tabs.add({
+                title: 'Panel' + id,
+                closable: true,
+                layout: 'fit',
+                items: [panel]
+            });
+            tabs.activate(tab);
+        }
+    });
+
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+        <div style="align:center; width:300px; margin:50px;">
+            <div id="add-grid"></div>&nbsp;&nbsp;<div id="add-panel"></div>
+        </div>
+        <div id="tab" style="align:center; width:300px; margin:50px;"></div>
+    </body>
+</html>

@@ -1,0 +1,53 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="../../resources/css/ext-all.css" type="text/css">
+    <script src="../../adapter/ext/ext-base.js"></script>
+    <script src="../../ext-all-debug.js"></script>
+    <title>11.util</title>
+    <script type="text/javascript">
+Ext.override(Ext.KeyNav, {
+    disable: function() {
+        if (!this.disabled) {
+            //if(this.forceKeyDown || Ext.isIE || Ext.isSafari3 || Ext.isAir){
+                this.el.un("keydown", this.relay, this);
+            //} else {
+                this.el.un("keydown", this.prepareEvent, this);
+                this.el.un("keypress", this.relay, this);
+                this.disabled = true;
+            //}
+        }
+    }
+});
+
+Ext.onReady(function() {
+    var keyNav = new Ext.KeyNav('textarea', {
+        left: function(e) {
+            this.el.setWidth(this.el.getWidth() - 10);
+        },
+        right: function(e) {
+            this.el.setWidth(this.el.getWidth() + 10);
+        },
+        up: function(e) {
+            this.el.setHeight(this.el.getHeight() - 10);
+        },
+        down: function(e) {
+            this.el.setHeight(this.el.getHeight() + 10);
+        }
+    });
+
+    Ext.get("dis").on('click', function() {
+        keyNav.disable();
+    });
+    Ext.get('en').on('click', function() {
+        keyNav.enable();
+    });
+});
+    </script>
+  </head>
+  <body>
+    <button id="dis">disable</button>
+    <button id="en">enable</button>
+    <br />
+    <textarea id="textarea"></textarea>
+  </body>
+</html>

@@ -1,0 +1,20 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="../../resources/css/ext-all.css" type="text/css">
+    <script src="../../adapter/ext/ext-base.js"></script>
+    <script src="../../ext-all-debug.js"></script>
+    <title>11.util</title>
+    <script type="text/javascript">
+Ext.onReady(function() {
+    var metrics = Ext.util.TextMetrics.createInstance("text");
+    var size = metrics.getSize("www.family168.com");
+    Ext.getDom('result').innerHTML += size.width + "," + size.height;
+
+});
+    </script>
+  </head>
+  <body>
+    <div id="text"></div>
+    <div id="result" style="font-weight:bold;"></div>
+  </body>
+</html>

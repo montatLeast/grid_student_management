@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>03.grid</title>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all.js"></script>
+        <script type="text/javascript">
+Ext.onReady(function(){
+
+    var cm = new Ext.grid.ColumnModel([
+        {header:'编号',dataIndex:'id'},
+        {header:'名称',dataIndex:'name'},
+        {header:'描述',dataIndex:'descn'}
+    ]);
+
+    var store = new Ext.data.Store({
+        proxy: new Ext.data.HttpProxy({url:'08_02_01.jsp'}),
+        reader: new Ext.data.JsonReader({
+            totalProperty: 'totalProperty',
+            root: 'root'
+        }, [
+            {name: 'id'},
+            {name: 'name'},
+            {name: 'descn'}
+        ])
+    });
+
+    var grid = new Ext.grid.GridPanel({
+        renderTo: 'grid',
+        autoHeight: true,
+        store: store,
+        cm: cm,
+        bbar: new Ext.PagingToolbar({
+            pageSize: 10,
+            store: store,
+            displayInfo: true,
+            displayMsg: '显示第 {0} 条到 {1} 条记录，一共 {2} 条',
+            emptyMsg: "没有记录"
+        })
+    });
+    store.load({params:{start:0,limit:10}});
+
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+        <div id="grid" style="height:265px;"></div>
+    </body>
+</html>

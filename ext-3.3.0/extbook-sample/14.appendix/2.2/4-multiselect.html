@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>ext-2.2</title>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="../multiselect/multiselect.css"/>
+        <script type="text/javascript" src="../multiselect/DDView.js"></script>
+        <script type="text/javascript" src="../multiselect/MultiSelect.js"></script>
+        <script type="text/javascript">
+Ext.BLANK_IMAGE_URL = '../../resources/images/default/s.gif';
+
+Ext.onReady(function(){
+
+    var form = new Ext.form.FormPanel({
+        title: 'Multi Select',
+        frame: true,
+        width: 600,
+        items: [{
+            xtype:"multiselect",
+            fieldLabel:"多选框",
+            name:"multiselect",
+            dataFields:["code", "desc"],
+            valueField:"code",
+            displayField:"desc",
+            width:250,
+            height:200,
+            allowBlank:false,
+            data:[[123,"One Hundred Twenty Three"],
+                ["1", "One"], ["2", "Two"], ["3", "Three"], ["4", "Four"], ["5", "Five"],
+                ["6", "Six"], ["7", "Seven"], ["8", "Eight"], ["9", "Nine"]]
+        }]
+    });
+
+    form.render(document.body);
+
+});
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

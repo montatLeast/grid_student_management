@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all-debug.js"></script>
+        <script type="text/javascript" src="localXHR.js"></script>
+        <title>09.menu</title>
+        <script type="text/javascript">
+Ext.onReady(function(){
+    // 创建工具条
+    var tb = new Ext.Toolbar();
+    tb.render('toolbar');
+
+    var menuFile = new Ext.menu.Menu();
+    menuFile.add({text: '新建'});
+    menuFile.add('-');
+    menuFile.add({text: '打开'});
+    menuFile.add('separator');
+    menuFile.add({text: '保存'});
+    menuFile.add(new Ext.menu.Separator());
+    menuFile.add({text: '关闭'});
+
+    // 为工具条添加4个按钮
+    tb.add({
+        text: '文件',
+        menu: menuFile
+    });
+
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+        <div id="toolbar"></div>
+    </body>
+</html>

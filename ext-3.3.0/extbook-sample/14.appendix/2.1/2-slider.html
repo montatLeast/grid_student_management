@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>grid</title>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <style type="text/css">
+.slider {
+    margin: 40px;
+}
+        </style>
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all.js"></script>
+        <script type="text/javascript">
+Ext.onReady(function(){
+
+    new Ext.Slider({
+        renderTo: 'slider1',
+        width: 214,
+        minValue: 0,
+        maxValue: 100
+    });
+
+    new Ext.Slider({
+        renderTo: 'slider2',
+        width: 214,
+        minValue: 0,
+        maxValue: 100,
+        value:50,
+        increment: 10
+    });
+
+    new Ext.Slider({
+        renderTo: 'slider3',
+        height: 214,
+        minValue: 0,
+        maxValue: 100,
+        vertical: true
+    });
+
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+        <div id="slider1" class="slider"></div>
+        <div id="slider2" class="slider"></div>
+        <div id="slider3" class="slider"></div>
+    </body>
+</html>

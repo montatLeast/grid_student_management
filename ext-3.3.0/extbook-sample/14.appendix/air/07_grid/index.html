@@ -1,0 +1,109 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="ext-2.0.2/resources/css/ext-all.css" />
+        <script type="text/javascript" src="ext-2.0.2/ext-base.js"></script>
+        <script type="text/javascript" src="ext-2.0.2/ext-all.js"></script>
+        <script type="text/javascript" src="ext-2.0.2/ext-lang-zh_CN.js"></script>
+        <script type="text/javascript" src="adobe-air/AIRAliases.js"></script>
+        <link rel="stylesheet" type="text/css" href="ext-air/resources/ext-air.css" />
+        <script type="text/javascript" src="ext-air/ext-air.js"></script>
+        <title>ext</title>
+        <script type="text/javascript">
+
+var User = Ext.data.Record.create([
+    {name: 'userId', type: 'int'},
+    {name: 'name', type: 'string'},
+    {name: 'sex', type: 'string'},
+    {name: 'descn', type: 'string'}
+]);
+
+UserStore = Ext.extend(Ext.data.Store, {
+    constructor: function(conn){
+        UserStore.superclass.constructor.call(this, {
+            reader: new Ext.data.JsonReader({
+                id: 'userId',
+                fields: User
+            })
+        });
+        this.conn = conn;
+        this.proxy = new Ext.sql.Proxy(conn, 'user', 'userId', this);
+
+        this.proxy.on('beforeload', this.prepareTable, conn);
+    },
+
+    addUser : function(data){
+        this.suspendEvents();
+        this.clearFilter();
+        this.resumeEvents();
+        this.loadData([data], true);
+        this.fireEvent('datachanged', this);
+    },
+
+    prepareTable : function(){
+        try{
+            this.createTable({
+                name: 'user',
+                key: 'userId',
+                fields: User.prototype.fields
+            });
+        }catch(e){console.log(e)}
+    }
+});
+
+Ext.onReady(function(){
+
+    var conn = Ext.sql.Connection.getInstance();
+    conn.open('ext.db');
+    var store = new UserStore(conn);
+
+    var selections = new Ext.grid.CheckboxSelectionModel();
+
+    var cm = new Ext.grid.ColumnModel([
+        selections,
+        {header:'编号',dataIndex:'userId',sortable:true},
+        {header:'名称',dataIndex:'name',sortable:true},
+        {header:'性别',dataIndex:'sex',sortable:true},
+        {header:'备注',dataIndex:'descn',sortable:true}
+    ]);
+
+    var grid = new Ext.grid.GridPanel({
+        autoHeight: true,
+        store: store,
+        cm: cm,
+        sm: selections,
+        renderTo: 'grid',
+        tbar: new Ext.Toolbar(['-', {
+            text: '添加一行',
+            handler: function(){
+                var user = {
+                    userId: new Date().getTime(),
+                    name:'name',
+                    sex:'sex',
+                    descn:'descn'
+                };
+                store.addUser(user);
+            }
+        }, '-', {
+            text: '删除一行',
+            handler: function(){
+                Ext.Msg.confirm('信息', '确定要删除？', function(btn){
+                    if (btn == 'yes') {
+                        selections.each(function(s){
+                            store.remove(s);
+                        });
+                    }
+                });
+            }
+        }, '-'])
+    });
+    store.load();
+
+});
+        </script>
+    </head>
+    <body>
+        <div id="grid"></div>
+    </body>
+</html>
+

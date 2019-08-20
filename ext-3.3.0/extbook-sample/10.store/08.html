@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all-debug.js"></script>
+        <script type="text/javascript" src="localXHR.js"></script>
+        <title>10.store</title>
+        <script type="text/javascript">
+
+function doSuccess(response) {
+    this.dom.value = response.responseText;
+}
+
+Ext.onReady(function(){
+    Ext.get('button').on('click', function(){
+        var text = Ext.get('text');
+        Ext.lib.Ajax.request(
+            'POST',
+            '08.txt',
+            {success:doSuccess,scope:text},
+            'param=' + encodeURIComponent(text.dom.value)
+        );
+    });
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+        <input type="text" name="text" id="text">
+        <input type="button" name="button" id="button" value="button">
+    </body>
+</html>

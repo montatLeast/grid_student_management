@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>04.form</title>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all.js"></script>
+        <script type="text/javascript" src="../../source/locale/ext-lang-zh_CN.js"></script>
+        <script type="text/javascript">
+Ext.onReady(function(){
+
+    Ext.QuickTips.init();
+
+    var form = new Ext.form.FormPanel({
+        defaultType: 'textfield',
+        buttonAlign: 'right',
+        labelAlign: 'left',
+        title: 'form',
+        labelWidth: 40,
+        frame:true,
+        width: 220,
+        url: 'form.jsp',
+
+        items: [
+            {fieldLabel: '俩字'},
+            {fieldLabel: '三个字'},
+            {fieldLabel: '四个汉字'}
+        ],
+        buttons: [{
+            text: '按钮',
+            handler: function() {
+                form.getForm().submit();
+            }
+        }]
+    });
+    form.render("form");
+
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+        <div id="form" style="margin:100px;"></div>
+    </body>
+</html>

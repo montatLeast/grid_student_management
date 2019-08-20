@@ -1,0 +1,16 @@
+<script>
+var person = {
+    name: 'boy',
+    getName: function() {
+        return this.name;
+    }
+};
+
+alert(person.getName());
+
+var fn = person.getName;
+alert(fn());
+
+alert(fn.call(person));
+
+</script>

@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="../../resources/css/ext-all.css" type="text/css">
+    <script src="../../adapter/ext/ext-base.js"></script>
+    <script src="../../ext-all-debug.js"></script>
+    <title>11.util - Delayed Task Bug</title>
+    <script type="text/javascript">
+Ext.onReady(function() {
+    Ext.get('button').on('click', function() {
+        var delay = new Ext.util.DelayedTask(function() {
+            var text = new Date().toLocaleString() + "<br />";
+            Ext.get('result').update(text);
+        });
+        delay.delay(500);
+    });
+});
+    </script>
+  </head>
+  <body>
+    <button id="button">button</button>
+    <div id="result"></div>
+  </body>
+</html>

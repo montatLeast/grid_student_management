@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>11.util</title>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all.js"></script>
+        <style type="text/css">
+#myDiv {
+    width: 50px;
+    border: 1px solid black;
+}
+
+.red {
+    background: red;
+}
+        </style>
+        <script type="text/javascript">
+Ext.onReady(function(){
+});
+
+function restart() {
+    var myDiv = Ext.get('myDiv');
+    myDiv.setWidth(50);
+    myDiv.setOpacity(1);
+    myDiv.removeClass("red");
+    myDiv.moveTo(0,0);
+}
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+        <br><br>
+        <div id="myDiv">myDiv</div>
+        <br><br>
+        <input type="button" value="restart" onclick="restart()">
+        <br><br>
+        <input type="button" value="hightlight" onclick="var myDiv = Ext.get('myDiv');myDiv.highlight();">
+        <input type="button" value="center" onclick="var myDiv = Ext.get('myDiv');myDiv.center();">
+        <input type="button" value="red" onclick="var myDiv = Ext.get('myDiv');myDiv.addClass('red');">
+        <input type="button" value="opacity" onclick="var myDiv = Ext.get('myDiv');myDiv.setOpacity(.25);">
+        <br><br>
+        <input type="button" value="setWidth(100)" onclick="var myDiv = Ext.get('myDiv');myDiv.setWidth(100);">
+        <input type="button" value="setWidth(100, true)" onclick="var myDiv = Ext.get('myDiv');myDiv.setWidth(100, true);">
+        <input type="button" value="setWidth(100, opt)" onclick="var myDiv = Ext.get('myDiv');myDiv.setWidth(100, {duration: 2, callback: this.foo, scope: this});">
+    </body>
+</html>

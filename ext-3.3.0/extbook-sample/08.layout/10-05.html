@@ -1,0 +1,117 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>08.layout</title>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all.js"></script>
+        <script type="text/javascript" src="localXHR.js"></script>
+        <script type="text/javascript">
+Ext.BLANK_IMAGE_URL = '../../resources/images/default/s.gif';
+Ext.onReady(function(){
+
+    // grid start
+    var cm = new Ext.grid.ColumnModel([
+        {header:'编号',dataIndex:'id'},
+        {header:'名称',dataIndex:'name'},
+        {header:'描述',dataIndex:'descn'}
+    ]);
+
+    var data = [
+        ['1','name1','descn1'],
+        ['2','name2','descn2'],
+        ['3','name3','descn3'],
+        ['4','name4','descn4'],
+        ['5','name5','descn5']
+    ];
+
+    var ds = new Ext.data.Store({
+        proxy: new Ext.data.MemoryProxy(data),
+        reader: new Ext.data.ArrayReader({}, [
+            {name: 'id'},
+            {name: 'name'},
+            {name: 'descn'}
+        ])
+    });
+    ds.load();
+
+    var grid = new Ext.grid.GridPanel({
+        ds: ds,
+        cm: cm,
+        title: 'center-north',
+        region: 'north'
+    });
+    // grid end
+
+    // tree start
+    var tree = new Ext.tree.TreePanel({
+        loader: new Ext.tree.TreeLoader({dataUrl: '10-05.tree.txt'}),
+        title: 'west',
+        region: 'west',
+        split: true,
+        border: true,
+        collapsible: true,
+        width: 120,
+        minSize: 80,
+        maxSize: 200
+    });
+
+    var root = new Ext.tree.AsyncTreeNode({text:'偶是根'});
+    tree.setRootNode(root);
+    root.expand();
+    // tree end
+
+    // form start
+    var form = new Ext.form.FormPanel({
+        defaultType: 'textfield',
+        labelAlign: 'right',
+        title: 'form',
+        labelWidth: 50,
+        frame:true,
+        width: 220,
+
+        title: 'center-center',
+        region: 'center',
+
+        items: [{
+            fieldLabel: '文本框',
+            anchor: '90%'
+        }],
+        buttons: [{
+            text: '按钮'
+        }]
+    });
+    // form end
+
+    // layout start
+    var viewport = new Ext.Viewport({
+        layout:'border',
+        items:[{
+            region: 'north',
+            contentEl: 'north-div',
+            height: 80,
+            bodyStyle: 'background-color:#BBCCEE;'
+        },{
+            region: 'south',
+            contentEl: 'south-div',
+            height: 20,
+            bodyStyle: 'background-color:#BBCCEE;'
+        },tree,{
+            region: 'center',
+            split: true,
+            border: true,
+            layout: 'border',
+            items: [grid,form]
+        }]
+    });
+    // layout end
+
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../samples.js"></script>
+        <div id="north-div">标题栏：viewport加panel实现复杂布局</div>
+        <div id="south-div">状态栏：Copyright by www.family168.com</div>
+    </body>
+</html>

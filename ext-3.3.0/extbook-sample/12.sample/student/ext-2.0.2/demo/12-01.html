@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>学生信息管理</title>
+        <link rel="stylesheet" type="text/css" href="../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../ext-base.js"></script>
+        <script type="text/javascript" src="../ext-all.js"></script>
+        <script type="text/javascript" src="../ext-lang-zh_CN.js"></script>
+        <script type="text/javascript">
+Ext.BLANK_IMAGE_URL = '../resources/images/default/s.gif';
+        </script>
+        <link rel="stylesheet" type="text/css" href="../styles/ext-patch.css" />
+        <script type="text/javascript">
+
+Ext.onReady(function() {
+    // layout start
+    var viewport = new Ext.Viewport({
+        layout: 'border',
+        items: [{
+            region: 'north',
+            html: 'head'
+        }, {
+            region: 'center',
+            html: 'grid'
+        }, {
+            region: 'east',
+            html: 'form'
+        }, {
+            region: 'south',
+            html: 'foot'
+        }]
+    });
+    // layout end
+});
+        </script>
+    </head>
+    <body>
+        <div id="main">
+            <div id="head" style="font-weight:bold;font-size:200%;">学生信息管理</div>
+            <div id="foot" style="text-align:right;"> - &copy; 2008 <a href="http://www.family168.com" target="_blank">www.family168.com</a> - </div>
+        </div>
+    </body>
+</html>
+
+
+
+

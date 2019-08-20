@@ -1,0 +1,12 @@
+[
+    {text:'00',leaf:true},
+    {text:'01',qtip:'01',children:[
+        {text:'01-01',qtip:'01-01',leaf:true},
+        {text:'01-02',qtip:'01-02',leaf:true}
+    ]},
+    {text:'03',leaf:true},
+    {text:'02',qtip:'02',children:[
+        {text:'02-01',qtip:'02-01',leaf:true}
+    ]},
+    {text:'04',leaf:true}
+]

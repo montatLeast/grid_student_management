@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="../../resources/css/ext-all.css" type="text/css">
+    <script src="../../adapter/ext/ext-base.js"></script>
+    <script src="../../ext-all-debug.js"></script>
+    <title>11.util</title>
+    <script type="text/javascript">
+Ext.onReady(function() {
+    var collection = new Ext.util.MixedCollection();
+    //
+    collection.add(1);
+    collection.add(2);
+    collection.add(3);
+    //
+    var result = [];
+    for (var i = 0; i < collection.getCount(); i++) {
+        result.push(collection.get(i));
+    }
+    alert(result);
+    //
+    collection.removeAt(0);
+    //
+    collection.replace(0, 200);
+    //
+    result = [];
+    for (var i = 0; i < collection.getCount(); i++) {
+        result.push(collection.get(i));
+    }
+    alert(result);
+});
+    </script>
+  </head>
+  <body>
+    <div id="result"></div>
+  </body>
+</html>

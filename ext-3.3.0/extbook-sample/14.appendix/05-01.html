@@ -1,0 +1,14 @@
+<script>
+var Person = function(name) {
+    this.name = name;
+}
+Person.prototype.getName = function() {
+    return this.name;
+};
+Person.prototype.setName = function(name) {
+    this.name = name;
+};
+
+var boy = new Person('boy');
+alert(boy.getName());
+</script>

@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all-debug.js"></script>
+        <script type="text/javascript" src="localXHR.js"></script>
+        <title>10.store</title>
+        <script type="text/javascript">
+Ext.onReady(function(){
+    var PersonRecord = Ext.data.Record.create([
+        {name: 'name', type: 'string'},
+        {name: 'sex', type: 'int'}
+    ]);
+    var boy = new PersonRecord({
+        name: 'boy',
+        sex: 0
+    });
+    alert(boy.data.name);
+    alert(boy.data['name']);
+    alert(boy.get('name'));
+
+    // boy.data.name = 'boy name';
+    // boy.data['name'] = 'boy name';
+    boy.set('name', 'body name');
+
+    alert(boy.getChanges().name);
+	var copyBoy = boy.copy();
+	alert('copyBoy id:' + copyBoy.id + ', boy id:' + boy.id);
+
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+        <div id="toolbar"></div>
+    </body>
+</html>

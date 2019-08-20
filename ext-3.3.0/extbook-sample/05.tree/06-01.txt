@@ -1,0 +1,11 @@
+[
+    {text:'01',qtip:'01',children:[
+        {text:'01-01',qtip:'01-01',leaf:true},
+        {text:'01-02',qtip:'01-02',children:[
+            {text:'01-02-01',qtip:'01-02-01',leaf:true},
+            {text:'01-02-02',qtip:'01-02-02',leaf:true}
+        ]},
+        {text:'01-03',qtip:'01-03',leaf:true}
+    ]},
+    {text:'02',qtip:'02',leaf:true}
+]

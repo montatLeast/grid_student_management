@@ -1,0 +1,61 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>11.util</title>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all-debug.js"></script>
+        <style type="text/css">
+.red {
+    background: red;
+}
+        </style>
+        <script type="text/javascript">
+Ext.onReady(function(){
+
+    var data = [
+        ['1','male','name1','descn1'],
+        ['2','female','name2','descn2'],
+        ['3','male','name3','descn3'],
+        ['4','female','name4','descn4'],
+        ['5','male','name5','descn5']
+    ];
+
+    var t = new Ext.Template(
+        '<tr>',
+            '<td>{0}</td>',
+            '<td>{1:this.renderSex}</td>',
+            '<td>{2:trim}</td>',
+            '<td>{3:ellipsis(10)}</td>',
+        '</tr>'
+    );
+    t.renderSex = function(value) {
+        if (value == 'male') {
+            return "<span style='color:red;font-weight:bold;'>红男</span><img src='user_male.png' />";
+        } else {
+            return "<span style='color:green;font-weight:bold;'>绿女</span><img src='user_female.png' />";
+        }
+    };
+    t.compile();
+
+    for (var i = 0; i < data.length; i++) {
+        t.append(Ext.get('some-element'), data[i]);
+    }
+
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+        <table border="1">
+            <tbody id="some-element">
+                <tr>
+                    <td>id</td>
+                    <td>sex</td>
+                    <td>name</td>
+                    <td>descn</td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

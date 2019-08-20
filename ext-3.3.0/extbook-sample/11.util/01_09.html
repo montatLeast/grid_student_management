@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>11.util</title>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all.js"></script>
+        <script type="text/javascript">
+//
+var array = [1, 2, 3, 4];
+var sum = 0;
+Ext.each(array, function(item) {
+    sum += item;
+});
+alert(sum);
+
+//
+App = {
+    sum: 0,
+    fn: function(item) {
+        this.sum += item;
+    }
+};
+Ext.each(array, App.fn, App);
+alert(App.sum);
+
+//
+sum = 0
+Ext.each(array, function(item, index, allArray) {
+    sum += item * index + allArray.length;
+});
+alert(sum);
+
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

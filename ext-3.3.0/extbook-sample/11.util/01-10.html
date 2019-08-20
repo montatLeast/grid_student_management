@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>11.util</title>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all.js"></script>
+        <style type="text/css">
+body {
+    margin: 20 400;
+}
+div {
+    border: 1px solid gray;
+}
+        </style>
+        <script type="text/javascript">
+Ext.onReady(function() {
+    var array;
+    array = Ext.DomQuery.select('span');
+    Ext.each(array, function(elem) {
+        elem.style.backgroundColor = 'red';
+    });
+
+    array = Ext.DomQuery.select('div#root1>span');
+    Ext.each(array, function(elem) {
+        elem.style.color = 'yellow';
+    });
+
+    array = Ext.DomQuery.select('div#root1>span.span1');
+    Ext.each(array, function(elem) {
+        elem.style.backgroundColor = 'green';
+    });
+});
+        </script>
+    </head>
+    <body>
+      <div id="root1">
+        <span class="span1">span 1</span>
+        <span class="span2">span 2</span>
+        <span class="span1">span 3</span>
+        <span class="span2">span 4</span>
+        <span class="span1">span 5</span>
+      </div>
+      <div id="root2">
+        <span class="span0">span 0</span>
+      </div>
+    </body>
+</html>

@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>05.tree</title>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all.js"></script>
+        <script type="text/javascript" src="localXHR.js"></script>
+        <script type="text/javascript">
+Ext.onReady(function(){
+
+    var loader = new Ext.tree.TreeLoader({dataUrl: '01-06-01.txt'});
+    loader.processResponse = function(response, node, callback){
+        var json = response.responseText;
+        try {
+            var json = eval("("+json+")");
+            node.beginUpdate();
+            var o = json["key"];
+
+            for(var i = 0, len = o.length; i < len; i++){
+                var n = this.createNode(o[i]);
+                if(n){
+                    node.appendChild(n);
+                }
+            }
+            node.endUpdate();
+            if(typeof callback == "function"){
+                callback(this, node);
+            }
+        }catch(e){
+            this.handleFailure(response);
+        }
+    };
+
+    var tree = new Ext.tree.TreePanel({
+        el: 'tree',
+        loader: loader
+    });
+
+    var root = new Ext.tree.AsyncTreeNode({text:'我是根'});
+
+    tree.setRootNode(root);
+    tree.render();
+
+    root.expand();
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+        <div id="tree" style="height:300px;"></div>
+    </body>
+</html>

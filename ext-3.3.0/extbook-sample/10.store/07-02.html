@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all.js"></script>
+        <script type="text/javascript" src="localXHR.js"></script>
+        <title>10.store</title>
+        <script type="text/javascript">
+
+Ext.onReady(function() {
+
+    Ext.get('ajax').on('click', function() {
+        Ext.lib.Ajax.request(
+            'POST',
+            '07-01.txt',
+            {success: function(response){
+                Ext.Msg.alert('成功', response.responseText);
+            },failure: function(){
+                Ext.Msg.alert('失败', response.responseText);
+            }},
+            'data=' + encodeURIComponent(Ext.encode({name:'value'}))
+        );
+    });
+
+
+
+
+
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+            <input type="button" id="ajax" value="发送ajax请求" />
+    </body>
+</html>
+

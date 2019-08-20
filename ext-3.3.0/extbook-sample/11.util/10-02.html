@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>11.util</title>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all.js"></script>
+        <script type="text/javascript" src="localXHR.js"></script>
+        <style type="text/css">
+.pressButton {
+    font-style: italic;
+    font-weight: bold;
+    color: white;
+    background-color: green;
+    cursor: pointer;
+}
+        </style>
+        <script type="text/javascript">
+Ext.onReady(function() {
+    var clickRepeater = new Ext.util.ClickRepeater(Ext.get('button'), {
+        delay: 1000,
+        interval: 400,
+        pressClass: 'pressButton'
+    });
+    clickRepeater.on('click', function() {
+        Ext.getDom('clickResult').innerHTML += ' click'
+    });
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+        <h1>标题</h1>
+        <p>内容</p>
+        <div id="button">click button</div>
+        <div id="clickResult"></div>
+    </body>
+</html>

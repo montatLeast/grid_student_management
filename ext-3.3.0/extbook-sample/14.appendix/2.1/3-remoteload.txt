@@ -1,0 +1,20 @@
+{components:[{
+    xtype:'viewport',
+    layout:'border',
+    items:[{
+        region:'north',
+        html:'north'
+    },{
+        region:'south',
+        html:'south'
+    },{
+        region:'west',
+        html:'west'
+    },{
+        region:'east',
+        html:'east'
+    },{
+        region:'center',
+        html:'center'
+    }]
+}],success:true}

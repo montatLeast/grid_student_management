@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="../../resources/css/ext-all.css" type="text/css">
+    <script src="../../adapter/ext/ext-base.js"></script>
+    <script src="../../ext-all-debug.js"></script>
+    <title>11.util</title>
+    <script type="text/javascript">
+Ext.onReady(function() {
+    var task = {
+        run: function() {
+            Ext.get('result').update(new Date().toLocaleString());
+        },
+        interval: 1000
+    };
+    var taskRunner = new Ext.util.TaskRunner();
+    taskRunner.start(task);
+
+    Ext.get('stop').on('click', function() {
+        taskRunner.stop(task);
+    });
+    Ext.get('stopAll').on('click', function() {
+        taskRunner.stopAll();
+    });
+});
+    </script>
+  </head>
+  <body>
+    <button id="stop">stop</button>
+    <button id="stopAll">stopAll</button>
+    <div id="result"></div>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all-debug.js"></script>
+        <script type="text/javascript" src="localXHR.js"></script>
+        <title>11.util</title>
+        <script type="text/javascript">
+Ext.onReady(function(){
+
+    Ext.state.Manager.setProvider(new Ext.state.CookieProvider({}));
+
+    var viewport = new Ext.Viewport({
+        layout:'border',
+        items:[{
+            stateId: 'viewPortNorth',
+            region: 'north',
+            height: 50,
+            split: true
+        },{
+            region: 'south',
+            height: 50,
+            split: true
+        },{
+            region: 'west',
+            width: 50,
+            split: true
+        },{
+            region: 'east',
+            width: 50,
+            split: true
+        },{
+            region: 'center'
+        }]
+    });
+
+    var win = new Ext.Window({
+        title: 'title',
+        width: 300,
+        height: 200
+    });
+    win.show();
+
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+    </body>
+</html>
+

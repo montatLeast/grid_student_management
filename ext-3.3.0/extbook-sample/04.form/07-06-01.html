@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>04.form</title>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all.js"></script>
+        <script type="text/javascript">
+Ext.onReady(function(){
+    var data = [
+        ['value1','text1'],
+        ['value2','text2'],
+        ['value11','text11'],
+        ['value12','text12']
+    ];
+
+    var store = new Ext.data.SimpleStore({
+        fields: ['value', 'text'],
+        data: data
+    });
+
+    var combo = new Ext.form.ComboBox({
+        store: store,
+        emptyText: '请选择',
+        mode: 'local',
+        triggerAction: 'query',
+        valueField: 'value',
+        displayField: 'text',
+        applyTo: 'combo'
+    });
+
+    combo.on('select', function(comboBox){
+        alert(comboBox.getValue() + '-' + comboBox.getRawValue());
+    });
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../examples.js"></script>
+        <br /><br /><br />
+        <input id="combo" type="text"/>
+    </body>
+</html>
